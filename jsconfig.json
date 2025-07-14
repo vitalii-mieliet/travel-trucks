@@ -6,7 +6,9 @@
     },
     "module": "ESNext",
     "moduleResolution": "node",
-    "checkJs": true
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react-jsx"
   },
   "include": ["src"]
 }
