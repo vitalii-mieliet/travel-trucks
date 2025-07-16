@@ -1,9 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import SharedLayout from "./components/SharedLayout";
-import CatalogPage from "./pages/CatalogPage";
-import CamperDetailPage from "./pages/CamperDetailPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import { lazy } from "react";
+import withSuspense from "./utils/withSuspense";
+
+const HomePage = withSuspense(lazy(() => import("./pages/HomePage")));
+const CatalogPage = withSuspense(lazy(() => import("./pages/CatalogPage")));
+const CamperDetailPage = withSuspense(
+  lazy(() => import("./pages/CamperDetailPage"))
+);
+const NotFoundPage = withSuspense(lazy(() => import("./pages/NotFoundPage")));
 
 function App() {
   return (
