@@ -1,4 +1,4 @@
-export const campersSelector = (state) => state.campers.items;
-export const isLoadingSelector = (state) => state.campers.isLoading;
-export const isErrorSelector = (state) => state.campers.isError;
-export const errorSelector = (state) => state.campers.error;
+export const selectCampers = (state) => state.campers.items;
+export const selectIsLoading = (state) => state.campers.isLoading;
+export const selectIsError = (state) => state.campers.isError;
+export const selectError = (state) => state.campers.error;

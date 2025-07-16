@@ -1,1 +1,1 @@
-export const formDataSelector = (state) => state.bookForm.formData;
+export const selectFormData = (state) => state.bookForm.formData;
