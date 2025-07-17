@@ -12,3 +12,15 @@ export const fetchCampers = createAsyncThunk(
     }
   }
 );
+
+export const fetchCamperById = createAsyncThunk(
+  "campers/fetchDetails",
+  async (id, thunkApi) => {
+    try {
+      const { data } = await campersAPI.get(`/campers/${id}`);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
