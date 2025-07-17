@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import productsReducer from "@/redux/poducts/productsSlice";
+import productsReducer from "@/redux/products/productsSlice";
 import favoritesReducer from "@/redux/bookingForm/bookingFormSlice";
 import bookingFormReducer from "@/redux/bookingForm/bookingFormSlice";
 

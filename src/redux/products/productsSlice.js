@@ -8,7 +8,7 @@ export const productsSlice = createSlice({
     filter: {
       location: null,
       type: null,
-      equipment: [],
+      options: [],
     },
     itemDetails: null,
     isLoading: false,
@@ -20,13 +20,13 @@ export const productsSlice = createSlice({
       state.itemDetails = null;
     },
     setFilter: (state, action) => {
-      const { location, type, equipment } = action.payload;
+      const { location, type, options } = action.payload;
       if (location) state.filter.location = location;
       if (type) state.filter.type = type;
-      if (equipment) state.filter.equipment = equipment;
+      if (options) state.filter.options = options;
     },
     resetFilter: (state) => {
-      state.filter = { location: null, type: null, equipment: [] };
+      state.filter = { location: null, type: null, options: [] };
     },
   },
   extraReducers: (builder) =>
@@ -58,4 +58,4 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { resetItemDetails } = productsSlice.actions;
+export const { resetItemDetails, setFilter } = productsSlice.actions;

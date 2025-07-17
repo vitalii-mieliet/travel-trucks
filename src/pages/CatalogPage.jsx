@@ -1,6 +1,7 @@
 import ProductList from "@/components/ProductList/ProductList";
-import { fetchProducts } from "@/redux/poducts/productsOps";
-import { selectProducts } from "@/redux/poducts/productsSelectors";
+import SidebarFilter from "@/components/SidebarFilter/SidebarFilter";
+import { fetchProducts } from "@/redux/products/productsOps";
+import { selectProducts } from "@/redux/products/productsSelectors";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,7 +14,10 @@ const CatalogPage = () => {
 
   return (
     <>
-      <ProductList products={productList} />
+      <div style={{ display: "flex" }}>
+        <SidebarFilter />
+        <ProductList products={productList} />
+      </div>
     </>
   );
 };

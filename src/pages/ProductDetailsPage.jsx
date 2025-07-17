@@ -1,7 +1,7 @@
 import ProductOverview from "@/components/ProductOverview/ProductOverview";
-import { fetchProductById } from "@/redux/poducts/productsOps";
-import { selectProductDetails } from "@/redux/poducts/productsSelectors";
-import { resetItemDetails } from "@/redux/poducts/productsSlice";
+import { fetchProductById } from "@/redux/products/productsOps";
+import { selectProductDetails } from "@/redux/products/productsSelectors";
+import { resetItemDetails } from "@/redux/products/productsSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useParams } from "react-router-dom";
