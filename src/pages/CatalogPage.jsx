@@ -5,6 +5,7 @@ import {
   selectFilter,
   selectProducts,
 } from "@/redux/products/productsSelectors";
+import { setFilter } from "@/redux/products/productsSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,7 +17,10 @@ const CatalogPage = () => {
     dispatch(fetchProducts());
   }, [dispatch, filter]);
 
-  console.log(productList);
+  const handleLoadMoreBtn = () => {
+    dispatch(setFilter({ page: filter.page + 1 }));
+  };
+  // console.log(productList);
 
   return (
     <>
@@ -24,6 +28,9 @@ const CatalogPage = () => {
         <SidebarFilter />
         <ProductList products={productList} />
       </div>
+      <button type="button" onClick={handleLoadMoreBtn}>
+        Load more
+      </button>
     </>
   );
 };

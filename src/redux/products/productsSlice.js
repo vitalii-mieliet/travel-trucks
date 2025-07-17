@@ -9,6 +9,8 @@ export const productsSlice = createSlice({
       location: null,
       type: null,
       options: [],
+      page: 1,
+      limit: 4,
     },
     itemDetails: null,
     isLoading: false,
@@ -20,13 +22,21 @@ export const productsSlice = createSlice({
       state.itemDetails = null;
     },
     setFilter: (state, action) => {
-      const { location, type, options } = action.payload;
+      const { location, type, options, page, limit } = action.payload;
       if ("location" in action.payload) state.filter.location = location;
       if ("type" in action.payload) state.filter.type = type;
       if ("options" in action.payload) state.filter.options = options;
+      if ("page" in action.payload) state.filter.page = page;
+      if ("limit" in action.payload) state.filter.limit = limit;
     },
     resetFilter: (state) => {
-      state.filter = { location: null, type: null, options: [] };
+      state.filter = {
+        location: null,
+        type: null,
+        options: [],
+        page: 1,
+        limit: 4,
+      };
     },
   },
   extraReducers: (builder) =>
@@ -36,7 +46,11 @@ export const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        if (state.filter.page === 1) {
+          state.items = action.payload;
+        } else {
+          state.items = [...state.items, ...action.payload];
+        }
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;

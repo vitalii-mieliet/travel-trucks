@@ -1,18 +1,6 @@
 import { productsAPI } from "@/service/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// export const fetchProducts = createAsyncThunk(
-//   "products/fetchAll",
-//   async (_, thunkApi) => {
-//     try {
-//       const { data } = await productsAPI.get("/campers");
-//       return data.items;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const fetchProductById = createAsyncThunk(
   "products/fetchDetails",
   async (id, thunkApi) => {
@@ -31,6 +19,9 @@ export const fetchProducts = createAsyncThunk(
     try {
       const { filter } = getState().products;
       const params = new URLSearchParams();
+
+      params.set("page", filter.page);
+      params.set("limit", filter.limit);
 
       if (filter.location) params.set("location", filter.location);
       if (filter.type) params.set("form", filter.type);
