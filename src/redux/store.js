@@ -11,12 +11,13 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import productsReducer from "@/redux/products/productsSlice";
-import favoritesReducer from "@/redux/bookingForm/bookingFormSlice";
+import favoritesReducer from "@/redux/favorites/favoritesSlice";
 import bookingFormReducer from "@/redux/bookingForm/bookingFormSlice";
 
 const persistConfig = {
   key: "CAMP_KEY",
   storage,
+  whitelist: ["favorites", "bookingForm"],
 };
 const rootReducer = combineReducers({
   products: productsReducer,
