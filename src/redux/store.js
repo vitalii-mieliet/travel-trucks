@@ -10,9 +10,9 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import campersReducer from "@/redux/campers/campersSlice";
-import favoritesReducer from "@/redux/bookForm/bookFormSlice";
-import bookFormReducer from "@/redux/bookForm/bookFormSlice";
+import campersReducer from "@/redux/poducts/productsSlice";
+import favoritesReducer from "@/redux/bookingForm/bookingFormSlice";
+import bookFormReducer from "@/redux/bookingForm/bookingFormSlice";
 
 const persistConfig = {
   key: "CAMP_KEY",

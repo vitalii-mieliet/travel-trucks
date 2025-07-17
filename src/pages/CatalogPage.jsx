@@ -1,19 +1,19 @@
 import ProductList from "@/components/ProductList/ProductList";
-import { fetchCampers } from "@/redux/campers/campersOps";
-import { selectCampers } from "@/redux/campers/campersSelectors";
+import { fetchProducts } from "@/redux/poducts/productsOps";
+import { selectProducts } from "@/redux/poducts/productsSelectors";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  const camperList = useSelector(selectCampers);
+  const productList = useSelector(selectProducts);
   useEffect(() => {
-    dispatch(fetchCampers());
+    dispatch(fetchProducts());
   }, [dispatch]);
-  console.log(camperList);
+
   return (
     <>
-      <ProductList products={camperList} />
+      <ProductList products={productList} />
     </>
   );
 };

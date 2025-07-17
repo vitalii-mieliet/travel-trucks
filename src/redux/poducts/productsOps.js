@@ -1,11 +1,11 @@
-import { campersAPI } from "@/service/api";
+import { productsAPI } from "@/service/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchCampers = createAsyncThunk(
-  "campers/fetchAll",
+export const fetchProducts = createAsyncThunk(
+  "products/fetchAll",
   async (_, thunkApi) => {
     try {
-      const { data } = await campersAPI.get("/campers");
+      const { data } = await productsAPI.get("/campers");
       return data.items;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -13,11 +13,11 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
-export const fetchCamperById = createAsyncThunk(
-  "campers/fetchDetails",
+export const fetchProductById = createAsyncThunk(
+  "products/fetchDetails",
   async (id, thunkApi) => {
     try {
-      const { data } = await campersAPI.get(`/campers/${id}`);
+      const { data } = await productsAPI.get(`/campers/${id}`);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

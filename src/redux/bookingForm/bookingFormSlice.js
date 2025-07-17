@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const bookFormSlice = createSlice({
-  name: "bookForm",
+export const bookingFormSlice = createSlice({
+  name: "bookingForm",
   initialState: {
     formData: {},
   },
   reducers: {},
 });
 
-export default bookFormSlice.reducer;
+export default bookingFormSlice.reducer;

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCamperById, fetchCampers } from "./campersOps";
+import { fetchProductById, fetchProducts } from "./productsOps";
 
-export const campersSlice = createSlice({
-  name: "campers",
+export const productsSlice = createSlice({
+  name: "products",
   initialState: {
     items: [],
     itemDetails: null,
@@ -17,31 +17,31 @@ export const campersSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(fetchCampers.pending, (state) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchCampers.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = action.payload;
       })
-      .addCase(fetchCampers.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
       })
-      .addCase(fetchCamperById.pending, (state) => {
+      .addCase(fetchProductById.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchCamperById.fulfilled, (state, action) => {
+      .addCase(fetchProductById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.itemDetails = action.payload;
       })
-      .addCase(fetchCamperById.rejected, (state, action) => {
+      .addCase(fetchProductById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.payload;
       }),
 });
 
-export default campersSlice.reducer;
-export const { resetItemDetails } = campersSlice.actions;
+export default productsSlice.reducer;
+export const { resetItemDetails } = productsSlice.actions;

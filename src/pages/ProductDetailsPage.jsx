@@ -1,7 +1,7 @@
 import ProductOverview from "@/components/ProductOverview/ProductOverview";
-import { fetchCamperById } from "@/redux/campers/campersOps";
-import { selectCamperDetails } from "@/redux/campers/campersSelectors";
-import { resetItemDetails } from "@/redux/campers/campersSlice";
+import { fetchProductById } from "@/redux/poducts/productsOps";
+import { selectProductDetails } from "@/redux/poducts/productsSelectors";
+import { resetItemDetails } from "@/redux/poducts/productsSlice";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Outlet, useParams } from "react-router-dom";
@@ -9,10 +9,10 @@ import { Link, Outlet, useParams } from "react-router-dom";
 const ProductDetailsPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector(selectCamperDetails);
+  const product = useSelector(selectProductDetails);
   useEffect(() => {
     dispatch(resetItemDetails());
-    dispatch(fetchCamperById(id));
+    dispatch(fetchProductById(id));
   }, [dispatch, id]);
   if (!product) return <p>Loading</p>;
 
