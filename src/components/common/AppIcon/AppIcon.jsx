@@ -1,53 +1,61 @@
 import icon from "../../../assets/icons/sprite.svg";
 
 /**
- * Компонент Icon — універсальний рендерер SVG-іконок.
+ * Компонент AppIcon — універсальний рендерер SVG-іконок зі спрайта.
  *
  * Використовує спрайт з `../../assets/icons/sprite.svg` для відображення іконок за їхнім ID.
- * Дозволяє налаштовувати розмір, заповнення (fill), обведення (stroke) та додаткові CSS класи.
+ * Дозволяє налаштовувати:
+ * - розмір (`size`)
+ * - колір заповнення (`fill`)
+ * - колір обведення (`stroke`)
+ * - додаткові CSS класи (`className`)
  *
  * Пропси:
- * - `name` (string, за замовчуванням: "logo") — ID іконки у спрайті (наприклад: "burger-menu", "error", "check" тощо).
- * - `className` (string, необов’язково) — додаткові CSS класи.
- * - `size` (number, за замовчуванням: 16) — ширина та висота іконки у пікселях.
- * - `fill` (string, необов’язково) — колір заповнення SVG.
- * - `stroke` (string, необов’язково) — колір обведення SVG.
+ * - `name` (string, за замовчуванням: "logo") — ID іконки у спрайті
+ * - `className` (string, необов’язково) — додаткові CSS класи
+ * - `size` (number, за замовчуванням: 16) — ширина і висота в пікселях
+ * - `fill` (string, необов’язково) — SVG `fill` (колір заливки)
+ * - `stroke` (string, необов’язково) — SVG `stroke` (колір обведення)
  *
  * Приклад використання:
  * ```jsx
- * <Icon name="calendar" size={24} fill="#333" />
- * <Icon name="chevron-down" className="rotate" stroke="#999" />
+ * <AppIcon name="calendar" size={24} fill="#333" />
+ * <AppIcon name="close" className="icon-close" stroke="#999" />
  * ```
  *
- * Доступні ID іконок:
- * "logo", "burger-menu", "error", "success", "arrow-down", "arrow-up", "calendar",
- * "check", "chevron-down", "chevron-up", "clock", "close", "edit", "eye", "eye-off",
- * "log-out", "user-avatar", "search", "trash", "user"
+ * Доступні ID іконок (symbol id):
+ * "logo", "map", "fully", "van", "alcove", "kitchen", "automatic", "petrol",
+ * "heart", "gas", "water", "microwave", "bathroom", "star", "fridge",
+ * "tv", "radio", "ac", "close"
  */
 
 /**
- * Icon component — a universal SVG icon renderer.
+ * AppIcon component — a universal SVG icon renderer using sprite IDs.
  *
- * Uses the sprite from `../../assets/icons/sprite.svg` to display icons by their id.
- * Allows customization of size, fill, stroke, and additional class names.
+ * Uses the sprite from `../../assets/icons/sprite.svg` to display icons via the `name` prop.
+ * Allows customization of:
+ * - size (`size`)
+ * - fill color (`fill`)
+ * - stroke color (`stroke`)
+ * - additional CSS classes (`className`)
  *
  * Props:
- * - `name` (string, default: "logo") — ID of the icon in the sprite (e.g., "burger-menu", "error", "check", etc.).
- * - `className` (string, optional) — additional CSS classes.
- * - `size` (number, default: 16) — width and height of the icon in pixels.
- * - `fill` (string, optional) — SVG fill color.
- * - `stroke` (string, optional) — SVG stroke color.
+ * - `name` (string, default: "logo") — ID of the icon in the sprite (e.g., "map", "close", etc.)
+ * - `className` (string, optional) — additional CSS class names
+ * - `size` (number, default: 16) — width and height of the icon in pixels
+ * - `fill` (string, optional) — SVG `fill` color
+ * - `stroke` (string, optional) — SVG `stroke` color
  *
  * Example usage:
  * ```jsx
- * <Icon name="calendar" size={24} fill="#333" />
- * <Icon name="chevron-down" className="rotate" stroke="#999" />
+ * <AppIcon name="calendar" size={24} fill="#333" />
+ * <AppIcon name="close" className="icon-close" stroke="#999" />
  * ```
  *
  * Available icon IDs:
- * "logo", "burger-menu", "error", "success", "arrow-down", "arrow-up", "calendar",
- * "check", "chevron-down", "chevron-up", "clock", "close", "edit", "eye", "eye-off",
- * "log-out", "user-avatar", "search", "trash", "user"
+ * "logo", "map", "fully", "van", "alcove", "kitchen", "automatic", "petrol",
+ * "heart", "gas", "water", "microwave", "bathroom", "star", "fridge",
+ * "tv", "radio", "ac", "close"
  */
 
 const AppIcon = ({
