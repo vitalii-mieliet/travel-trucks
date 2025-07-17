@@ -10,18 +10,18 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import campersReducer from "@/redux/poducts/productsSlice";
+import productsReducer from "@/redux/poducts/productsSlice";
 import favoritesReducer from "@/redux/bookingForm/bookingFormSlice";
-import bookFormReducer from "@/redux/bookingForm/bookingFormSlice";
+import bookingFormReducer from "@/redux/bookingForm/bookingFormSlice";
 
 const persistConfig = {
   key: "CAMP_KEY",
   storage,
 };
 const rootReducer = combineReducers({
-  campers: campersReducer,
+  products: productsReducer,
   favorites: favoritesReducer,
-  bookForm: bookFormReducer,
+  bookingForm: bookingFormReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
