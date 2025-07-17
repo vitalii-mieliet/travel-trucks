@@ -1,16 +1,22 @@
 import ProductList from "@/components/ProductList/ProductList";
 import SidebarFilter from "@/components/SidebarFilter/SidebarFilter";
 import { fetchProducts } from "@/redux/products/productsOps";
-import { selectProducts } from "@/redux/products/productsSelectors";
+import {
+  selectFilter,
+  selectProducts,
+} from "@/redux/products/productsSelectors";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
   const productList = useSelector(selectProducts);
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch, filter]);
+
+  console.log(productList);
 
   return (
     <>

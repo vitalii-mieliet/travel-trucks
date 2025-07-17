@@ -38,7 +38,7 @@ const SidebarFilter = () => {
     dispatch(setFilter({ type: e.target.value || null }));
   };
 
-  console.log(filter);
+  // console.log(filter);
 
   return (
     <aside>
@@ -70,6 +70,16 @@ const SidebarFilter = () => {
 
       <fieldset>
         <legend>Vehicle type</legend>
+        <label>
+          <input
+            type="radio"
+            name="type"
+            value=""
+            checked={filter.type === null}
+            onChange={handleType}
+          />
+          All
+        </label>
         {productTypes.map((type) => (
           <label key={type}>
             <input

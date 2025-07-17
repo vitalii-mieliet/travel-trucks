@@ -21,9 +21,9 @@ export const productsSlice = createSlice({
     },
     setFilter: (state, action) => {
       const { location, type, options } = action.payload;
-      if (location) state.filter.location = location;
-      if (type) state.filter.type = type;
-      if (options) state.filter.options = options;
+      if ("location" in action.payload) state.filter.location = location;
+      if ("type" in action.payload) state.filter.type = type;
+      if ("options" in action.payload) state.filter.options = options;
     },
     resetFilter: (state) => {
       state.filter = { location: null, type: null, options: [] };
