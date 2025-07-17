@@ -1,5 +1,5 @@
 import { selectFilter } from "@/redux/products/productsSelectors";
-import { setFilter } from "@/redux/products/productsSlice";
+import { resetFilter, setFilter } from "@/redux/products/productsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const productTypes = ["alcove", "fullyIntegrated", "panelTruck"];
@@ -38,7 +38,9 @@ const SidebarFilter = () => {
     dispatch(setFilter({ type: e.target.value || null }));
   };
 
-  // console.log(filter);
+  const handleReset = () => {
+    dispatch(resetFilter());
+  };
 
   return (
     <aside>
@@ -93,6 +95,9 @@ const SidebarFilter = () => {
           </label>
         ))}
       </fieldset>
+      <button type="button" onClick={handleReset}>
+        Reset
+      </button>
     </aside>
   );
 };

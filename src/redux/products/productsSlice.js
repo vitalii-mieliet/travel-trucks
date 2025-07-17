@@ -58,4 +58,5 @@ export const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { resetItemDetails, setFilter } = productsSlice.actions;
+export const { resetItemDetails, setFilter, resetFilter } =
+  productsSlice.actions;
