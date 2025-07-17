@@ -50,7 +50,7 @@ import icon from "../../../assets/icons/sprite.svg";
  * "log-out", "user-avatar", "search", "trash", "user"
  */
 
-const Icon = ({
+const AppIcon = ({
   name = "logo",
   className,
   size = 16,
@@ -72,4 +72,4 @@ const Icon = ({
   );
 };
 
-export default Icon;
+export default AppIcon;
