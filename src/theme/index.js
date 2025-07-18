@@ -1,0 +1,168 @@
+import { createTheme } from "@mui/material/styles";
+import themeVars from "@/styles/themeVars";
+
+const theme = createTheme({
+  palette: {
+    primary: { main: themeVars.main },
+    secondary: { main: themeVars.text },
+    error: { main: themeVars.button },
+    background: {
+      default: themeVars.white,
+      paper: themeVars.badges,
+    },
+    text: {
+      primary: themeVars.text,
+      secondary: themeVars.gray,
+    },
+    gray: {
+      light: themeVars.grayLight,
+      main: themeVars.gray,
+    },
+    button: {
+      main: themeVars.button,
+      hover: themeVars.buttonHover,
+    },
+  },
+  typography: {
+    fontFamily: themeVars.fontFamily,
+    h6: { fontSize: "18px", fontWeight: 600 },
+    body2: { fontSize: "14px" },
+    caption: { fontSize: "12px" },
+  },
+  shape: {
+    borderRadius: 12,
+  },
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        color: "default",
+        elevation: 0,
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: themeVars.inputs,
+          color: "var(--main)", // цвет текста/иконок
+        },
+      },
+    },
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1440px",
+          paddingLeft: "64px",
+          paddingRight: "64px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "100%",
+          minHeight: "80px",
+          "@media (min-width:600px)": {
+            minHeight: "80px",
+          },
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1440px !important",
+          paddingLeft: "64px",
+          paddingRight: "64px",
+          marginLeft: "auto",
+          marginRight: "auto",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontFamily: themeVars.fontFamily,
+          textTransform: "none",
+          fontWeight: 500,
+          fontSize: "16px",
+          lineHeight: "150%",
+          letterSpacing: "-0.01em",
+        },
+
+        contained: {
+          padding: "16px 60px",
+          borderRadius: "200px",
+          color: themeVars.white,
+          backgroundColor: themeVars.button,
+          boxShadow: "none",
+          transition: "background-color 0.3s ease",
+          "&:hover": {
+            backgroundColor: themeVars.buttonHover,
+            boxShadow: "none",
+          },
+        },
+        outlined: {
+          padding: "16px 60px",
+          borderRadius: "200px",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: themeVars.grayLight,
+          color: themeVars.main,
+
+          transition: "background-color 0.3s ease",
+          "&:hover": {
+            borderColor: themeVars.buttonHover,
+            backgroundColor: "transparent",
+          },
+        },
+
+        text: {
+          textDecoration: "none",
+          padding: 0,
+          minWidth: "auto",
+          color: themeVars.main,
+          "&:hover": {
+            color: themeVars.buttonHover,
+            backgroundColor: "transparent",
+            textDecoration: "none",
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          fontWeight: 500,
+        },
+      },
+    },
+    MuiCheckbox: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          padding: 0,
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        },
+      },
+    },
+    MuiRadio: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          padding: 0,
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        },
+      },
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true, // ⬅️ глобально отключает ripple у всех основанных на ButtonBase компонентов
+      },
+    },
+  },
+});
+
+export default theme;
