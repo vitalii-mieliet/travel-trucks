@@ -28,14 +28,13 @@ const ProductFeaturesIcons = ({ product }) => {
   }
 
   return (
-    <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+    <Stack direction="row" flexWrap="wrap" useFlexGap sx={{ gap: "8px" }}>
       {visibleFeatures.map(({ key, label }) => (
         <Chip
           key={key}
-          icon={<AppIcon name={key} />}
+          icon={<AppIcon name={key} size={20} />}
           label={label}
           variant="outlined"
-          sx={{ mb: 1 }}
         />
       ))}
     </Stack>

@@ -1,17 +1,16 @@
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { Grid } from "@mui/material";
+import { Grid, List, ListItem } from "@mui/material";
 
 const ProductList = ({ products }) => {
-  if (!products?.length) return <p>No products found</p>; //! add messageComponent
   return (
-    <Grid container direction={"column"} spacing={4}>
+    <List direction={"column"} spacing={4}>
       {products.map((product) => (
-        <Grid key={product.id}>
+        <ListItem key={product.id} sx={{ p: 0 }}>
           <ProductCard product={product} />
-        </Grid>
+        </ListItem>
       ))}
-    </Grid>
+    </List>
   );
 };
 

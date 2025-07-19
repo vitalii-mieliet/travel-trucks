@@ -2,7 +2,9 @@ import ProductList from "@/components/ProductList/ProductList";
 import SidebarFilter from "@/components/SidebarFilter/SidebarFilter";
 import { fetchProducts } from "@/redux/products/productsOps";
 import {
+  selectError,
   selectFilter,
+  // selectIsLoading,
   selectProducts,
 } from "@/redux/products/productsSelectors";
 import { setFilter } from "@/redux/products/productsSlice";
@@ -14,6 +16,8 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
   const productList = useSelector(selectProducts);
+  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch, filter]);
@@ -21,18 +25,8 @@ const CatalogPage = () => {
   const handleLoadMoreBtn = () => {
     dispatch(setFilter({ page: filter.page + 1 }));
   };
-  // console.log(productList);
 
   return (
-    // <>
-    //   <div style={{ display: "flex" }}>
-    //     <SidebarFilter />
-    //     <ProductList products={productList} />
-    //   </div>
-    //   <button type="button" onClick={handleLoadMoreBtn}>
-    //     Load more
-    //   </button>
-    // </>
     <Container maxWidth="xl" sx={{ py: 4 }}>
       <Grid container spacing={4}>
         {/* Sidebar */}
@@ -42,14 +36,24 @@ const CatalogPage = () => {
 
         {/* Product List */}
         <Grid size={8}>
-          <ProductList products={productList} />
+          {error ? (
+            <Box p={4} textAlign="center">
+              <strong>No results found. Try changing your filters.</strong>
+            </Box>
+          ) : (
+            <>
+              <ProductList products={productList} />
 
-          {/* Load more button */}
-          <Box textAlign="center" mt={3}>
-            <Button variant="contained" onClick={handleLoadMoreBtn}>
-              Load more
-            </Button>
-          </Box>
+              {/* Load more button */}
+              {productList.length > 0 && (
+                <Box textAlign="center" mt={3}>
+                  <Button variant="contained" onClick={handleLoadMoreBtn}>
+                    Load more
+                  </Button>
+                </Box>
+              )}
+            </>
+          )}
         </Grid>
       </Grid>
     </Container>

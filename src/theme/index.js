@@ -25,8 +25,30 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: themeVars.fontFamily,
+    h3: {
+      fontSize: "24px",
+      fontWeight: "600",
+      lineHeight: "133%",
+      color: themeVars.main,
+    },
     h6: { fontSize: "18px", fontWeight: 600 },
-    body2: { fontSize: "14px" },
+    body1: {
+      fontSize: "16px",
+      fontWeight: "400",
+      lineHeight: "150%",
+      color: themeVars.main,
+    },
+    body2: {
+      fontSize: "16px",
+      fontWeight: "400",
+      lineHeight: "150%",
+      color: themeVars.text,
+    },
+    button: {
+      fontSize: "16px",
+      fontWeight: "500",
+      lineHeight: "150%",
+    },
     caption: { fontSize: "12px" },
   },
   shape: {
@@ -69,6 +91,33 @@ const theme = createTheme({
           paddingRight: "64px",
           marginLeft: "auto",
           marginRight: "auto",
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          border: "1px solid var(--gray-light)",
+          borderRadius: "20px",
+          padding: "24px",
+          backgroundColor: "var(--white)",
+          boxShadow: "none",
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          "&:last-child": {
+            paddingBottom: 0,
+          },
+        },
+      },
+    },
+    MuiCardMedia: {
+      styleOverrides: {
+        root: {
+          borderRadius: "10px",
         },
       },
     },
@@ -126,8 +175,10 @@ const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: "100px",
+          padding: "12px 18px",
           fontWeight: 500,
+          fontSize: 16,
         },
       },
     },

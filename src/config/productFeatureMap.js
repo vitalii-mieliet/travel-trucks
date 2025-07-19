@@ -1,6 +1,6 @@
 const productFeatureMap = {
   transmission: {
-    type: "select", // UI type: radio/select
+    type: "select",
     options: {
       automatic: "Automatic",
       manual: "Manual",
@@ -12,6 +12,15 @@ const productFeatureMap = {
       petrol: "Petrol",
       diesel: "Diesel",
       gas: "Gas",
+      hybrid: "Hybrid",
+    },
+  },
+  form: {
+    type: "select",
+    options: {
+      alcove: "Alcove",
+      fullyIntegrated: "Fully Integrated",
+      panelTruck: "Van",
     },
   },
   AC: {
@@ -45,6 +54,10 @@ const productFeatureMap = {
   water: {
     type: "boolean",
     label: "Water",
+  },
+  gas: {
+    type: "boolean",
+    label: "Gas",
   },
 };
 

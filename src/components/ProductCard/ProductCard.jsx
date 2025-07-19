@@ -12,6 +12,7 @@ import {
 
 import { Link } from "react-router-dom";
 import AppIcon from "../common/AppIcon/AppIcon";
+import ProductFeaturesIcons from "../common/ProductFeaturesIcons/ProductFeaturesIcons";
 
 const ProductCard = ({ product }) => {
   const { id, name, price, location, rating, reviews, description, gallery } =
@@ -21,19 +22,19 @@ const ProductCard = ({ product }) => {
       sx={{
         display: "flex",
         gap: 2,
-        p: 2,
-        borderRadius: 3,
-        boxShadow: "0 0 0 1px #E0E0E0",
+        overflow: "hidden",
+        maxWidth: "100%",
+        boxSizing: "border-box",
       }}
     >
       {/* Image */}
       <CardMedia
         component="img"
         sx={{
-          width: 274,
-          height: 268,
-          borderRadius: 2,
+          width: 292,
+          height: 320,
           objectFit: "cover",
+          flexShrink: 0,
         }}
         image={gallery[0]?.thumb}
         alt={name}
@@ -41,7 +42,13 @@ const ProductCard = ({ product }) => {
 
       {/* Content */}
       <CardContent
-        sx={{ flex: 1, p: 0, display: "flex", flexDirection: "column" }}
+        sx={{
+          flex: 1,
+          p: 0,
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+        }}
       >
         {/* Name, Price,  Favorites*/}
         <Box
@@ -49,19 +56,19 @@ const ProductCard = ({ product }) => {
           justifyContent="space-between"
           alignItems="flex-start"
         >
-          <Typography variant="h6" component="h3">
+          <Typography variant="h3" component="h3">
             {name}
           </Typography>
           <Box display="flex" alignItems="center" gap={1}>
-            <Typography variant="h6">€{price}</Typography>
+            <Typography variant="h3">€{price}.00</Typography>
             <IconButton>
-              <AppIcon name="heart" stroke="black" />
+              <AppIcon name="heart" stroke="black" size={24} />
             </IconButton>
           </Box>
         </Box>
 
         {/* Rating, location */}
-        <Stack direction="row" spacing={1} alignItems="center" mb={1}>
+        <Stack direction="row" spacing={1} alignItems="center" mb={3}>
           <AppIcon name="star" fill="#FFC531" stroke="non" />
           <Typography>
             {rating} ({reviews.length} Reviews)
@@ -71,13 +78,31 @@ const ProductCard = ({ product }) => {
         </Stack>
 
         {/* Description */}
-        <Typography>{description}</Typography>
+        <Typography
+          variant="body-2"
+          mb={3}
+          sx={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            minWidth: 0,
+            maxWidth: "100%",
+          }}
+        >
+          {description}
+        </Typography>
 
         {/* Features */}
+        <ProductFeaturesIcons product={product} />
 
         {/* Show More Button */}
         <Box mt="auto">
-          <Button variant="contained" component={Link} to={`/catalog/${id}`}>
+          <Button
+            mt="auto"
+            variant="contained"
+            component={Link}
+            to={`/catalog/${id}`}
+          >
             Show more
           </Button>
         </Box>

@@ -9,11 +9,13 @@ import {
   FormControl,
   FormGroup,
   FormLabel,
+  InputAdornment,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setFilter, resetFilter } from "@/redux/products/productsSlice";
 import IconTile from "@/components/common/IconTile/IconTile";
+import AppIcon from "../common/AppIcon/AppIcon";
 
 const productTypes = ["alcove", "fullyIntegrated", "panelTruck"];
 const productOptions = [
@@ -74,15 +76,54 @@ const SidebarFilter = () => {
       <Box component="form" onSubmit={handleSearch}>
         <Stack spacing={4}>
           {/* Location */}
-          <TextField
-            label="Location"
-            name="location"
-            variant="outlined"
-            size="small"
-            fullWidth
-            value={localFilter.location}
-            onChange={handleLocation}
-          />
+          <FormControl fullWidth>
+            <FormLabel
+              sx={{
+                color: "var(--text)",
+                fontWeight: 500,
+                fontSize: "18px",
+                lineHeight: "1.2",
+                mb: 1,
+              }}
+            >
+              Location
+            </FormLabel>
+
+            <TextField
+              value={localFilter.location}
+              onChange={handleLocation}
+              placeholder="City"
+              variant="filled"
+              InputProps={{
+                disableUnderline: true,
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AppIcon name="map" size={20} />
+                  </InputAdornment>
+                ),
+                sx: {
+                  backgroundColor: "var(--inputs)",
+                  borderRadius: "20px",
+                  fontWeight: 500,
+                  color: "var(--main)",
+                  height: "56px",
+                  px: 2,
+                },
+              }}
+              sx={{
+                "& .MuiFilledInput-root": {
+                  borderRadius: "20px",
+                  backgroundColor: "var(--inputs)",
+                  "&:hover": {
+                    backgroundColor: "var(--inputs)",
+                  },
+                  "&.Mui-focused": {
+                    backgroundColor: "var(--inputs)",
+                  },
+                },
+              }}
+            />
+          </FormControl>
 
           {/* Vehicle equipment */}
           <FormControl component="fieldset">
