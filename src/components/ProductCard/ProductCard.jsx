@@ -58,11 +58,11 @@ const ProductCard = ({ product }) => {
           justifyContent="space-between"
           alignItems="flex-start"
         >
-          <Typography variant="h3" component="h3">
+          <Typography variant="h2" component="h2">
             {name}
           </Typography>
           <Box display="flex" alignItems="center" gap={1}>
-            <Typography variant="h3">€{price}.00</Typography>
+            <Typography variant="h2">€{price}.00</Typography>
             <FavoriteButton productId={product.id} />
           </Box>
         </Box>

@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, Typography, Stack, Grid, Chip, Rating } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Stack,
+  Grid,
+  Chip,
+  Rating,
+  ImageListItem,
+  ListItem,
+  List,
+} from "@mui/material";
 import AppIcon from "../common/AppIcon/AppIcon";
 import theme from "@/theme";
 import { Link } from "react-router-dom";
@@ -7,28 +17,8 @@ import { Link } from "react-router-dom";
 const ProductOverview = ({ product }) => {
   return (
     <Box component={"section"}>
-      {/* Gallery */}
-      <Stack direction="row" spacing={2} overflow="auto" mb={3}>
-        {product.gallery.map((img, index) => (
-          <Box
-            key={index}
-            component="img"
-            src={img.thumb}
-            alt={`Product image ${index + 1}`}
-            sx={{
-              width: 220,
-              height: 160,
-              objectFit: "cover",
-              borderRadius: 2,
-              flexShrink: 0,
-            }}
-          />
-        ))}
-      </Stack>
-
-      {/* Info */}
       <Box mb={2}>
-        <Stack direction="row" alignItems="center" spacing={1}>
+        <Stack direction="row" alignItems="center" mb={2}>
           <AppIcon
             name="star"
             fill={theme.palette.ratingStar.active}
@@ -44,19 +34,52 @@ const ProductOverview = ({ product }) => {
           <Typography>{product.location}</Typography>
         </Stack>
 
-        <Typography mt={1}>€{product.price}</Typography>
-        <Typography mt={1}>{product.description}</Typography>
+        <Typography variant="h2" mb={3.5}>
+          €{product.price}
+        </Typography>
       </Box>
+      {/* Gallery */}
+      <List
+        sx={{
+          display: "flex",
+          overflowX: "auto",
+          scrollBehavior: "smooth",
+          gap: "48px",
+          padding: 0,
+          marginBottom: 3.5,
+        }}
+      >
+        {product.gallery.map((img, index) => (
+          <ListItem
+            key={index}
+            disablePadding
+            sx={{
+              flexShrink: 0,
+              width: 292,
+              height: 312,
+              borderRadius: "10px",
+              overflow: "hidden",
+              p: 0,
+            }}
+          >
+            <img
+              src={img.thumb}
+              alt={`Product image ${index + 1}`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "10px",
+                display: "block",
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
 
-      {/* <h2>Product Overview</h2>
-      <p>{product.rating}</p>
-      <p>{product.reviews.length}</p>
-      <p>{product.location}</p>
-      <p>{product.price}</p>
-      {product.gallery.map((img, index) => (
-        <img key={index} src={img.thumb} alt={`Product image ${index + 1}`} />
-      ))}
-      <p>{product.description}</p> */}
+      {/* Info */}
+
+      <Typography>{product.description}</Typography>
     </Box>
   );
 };
