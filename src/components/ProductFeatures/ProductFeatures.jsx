@@ -12,12 +12,14 @@ import {
 } from "@mui/material";
 import ProductFeaturesIcons from "@/components/common/ProductFeaturesIcons/ProductFeaturesIcons";
 import vehicleDetails from "@/config/vehicleDetails";
+import { visuallyHidden } from "@mui/utils";
 const ProductFeatures = () => {
   const product = useOutletContext();
   const theme = useTheme();
 
   return (
     <Box
+      component={"section"}
       height={588}
       px={5.5}
       py={6.5}
@@ -25,6 +27,9 @@ const ProductFeatures = () => {
       bgcolor={theme.palette.aditional.inputs}
       sx={{ display: "flex", flexDirection: "column" }}
     >
+      <Typography variant="h3" component={"h3"} sx={visuallyHidden}>
+        Features
+      </Typography>
       <ProductFeaturesIcons product={product} maxRows={3} />
 
       {/* Vehicle Details */}

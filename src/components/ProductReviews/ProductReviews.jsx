@@ -12,6 +12,7 @@ import {
   useTheme,
 } from "@mui/material";
 import AppIcon from "../common/AppIcon/AppIcon";
+import { visuallyHidden } from "@mui/utils";
 
 const ProductReviews = () => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ const ProductReviews = () => {
 
   return (
     <Box component={"section"}>
-      <Typography variant="h3" gutterBottom>
+      <Typography variant="h3" component={"h3"} sx={visuallyHidden}>
         Reviews
       </Typography>
 
