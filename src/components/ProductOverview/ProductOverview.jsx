@@ -18,20 +18,24 @@ const ProductOverview = ({ product }) => {
   return (
     <Box component={"section"}>
       <Box mb={2}>
-        <Stack direction="row" alignItems="center" mb={2}>
-          <AppIcon
-            name="star"
-            fill={theme.palette.ratingStar.active}
-            stroke="none"
-          />
-          <Link to={`/catalog/${product.id}/reviews`}>
-            <Typography>
-              {product.rating} ({product.reviews.length} Reviews)
-            </Typography>
-          </Link>
+        <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <AppIcon
+              name="star"
+              fill={theme.palette.ratingStar.active}
+              stroke="none"
+            />
+            <Link to={`/catalog/${product.id}/reviews`}>
+              <Typography>
+                {product.rating} ({product.reviews.length} Reviews)
+              </Typography>
+            </Link>
+          </Stack>
 
-          <AppIcon name="map" />
-          <Typography>{product.location}</Typography>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <AppIcon name="map" />
+            <Typography>{product.location}</Typography>
+          </Stack>
         </Stack>
 
         <Typography variant="h2" mb={3.5}>

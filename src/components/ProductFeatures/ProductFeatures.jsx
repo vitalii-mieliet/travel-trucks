@@ -25,7 +25,6 @@ const ProductFeatures = () => {
       bgcolor={theme.palette.aditional.inputs}
       sx={{ display: "flex", flexDirection: "column" }}
     >
-      {/* Иконки/фичи */}
       <ProductFeaturesIcons product={product} maxRows={3} />
 
       {/* Vehicle Details */}
@@ -58,24 +57,6 @@ const ProductFeatures = () => {
             ))}
           </TableBody>
         </Table>
-        {/* <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Form: <strong>{product.form}</strong>
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Length: <strong>{product.length}</strong>
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Width: <strong>{product.width}</strong>
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Height: <strong>{product.height}</strong>
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Tank: <strong>{product.tank}</strong>
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 0.5 }}>
-          Consumption: <strong>{product.consumption}</strong>
-        </Typography> */}
       </Box>
     </Box>
   );

@@ -38,6 +38,12 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: themeVars.fontFamily,
+    h1: {
+      fontSize: "48px",
+      fontWeight: "600",
+      lineHeight: "67%",
+      color: themeVars.white,
+    },
     h2: {
       fontSize: "24px",
       fontWeight: "600",
@@ -49,6 +55,12 @@ const theme = createTheme({
       fontWeight: 600,
       lineHeight: "133%",
       color: themeVars.main,
+    },
+    h6: {
+      fontSize: "24px",
+      fontWeight: 600,
+      lineHeight: "133%",
+      color: themeVars.white,
     },
     body1: {
       fontSize: "16px",
@@ -367,6 +379,17 @@ const theme = createTheme({
           lineHeight: "133%",
           width: "60px",
           height: "60px",
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Inter", sans-serif',
+          fontWeight: 600,
+          fontSize: "20px",
+          lineHeight: "120%",
+          color: themeVars.main,
         },
       },
     },

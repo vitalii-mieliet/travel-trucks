@@ -17,7 +17,7 @@ const CatalogPage = () => {
   const filter = useSelector(selectFilter);
   const productList = useSelector(selectProducts);
   const error = useSelector(selectError);
-  // const isLoading = useSelector(selectIsLoading);
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch, filter]);
@@ -27,8 +27,8 @@ const CatalogPage = () => {
   };
 
   return (
-    <Container maxWidth="xl" disableGutters>
-      <Grid container spacing={4}>
+    <Container maxWidth="1440px" disableGutters>
+      <Grid container spacing={8}>
         {/* Sidebar */}
         <Grid size={4}>
           <SidebarFilter />
@@ -47,7 +47,7 @@ const CatalogPage = () => {
               {/* Load more button */}
               {productList.length > 0 && (
                 <Box textAlign="center" mt={3}>
-                  <Button variant="contained" onClick={handleLoadMoreBtn}>
+                  <Button variant="outlined" onClick={handleLoadMoreBtn}>
                     Load more
                   </Button>
                 </Box>

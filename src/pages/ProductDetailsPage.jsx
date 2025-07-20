@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
   const currentTab = currentPath.endsWith("reviews") ? 1 : 0;
 
   return (
-    <Container maxWidth="xl" disableGutters>
+    <Container maxWidth="1440px" disableGutters>
       <Box mb={7.75}>
         <Typography variant="h2" component="h2" mb={1}>
           {product.name}

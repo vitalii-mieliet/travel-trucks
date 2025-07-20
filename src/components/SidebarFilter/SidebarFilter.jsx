@@ -10,6 +10,7 @@ import {
   FormGroup,
   FormLabel,
   InputAdornment,
+  Divider,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -93,17 +94,14 @@ const SidebarFilter = () => {
               value={localFilter.location}
               onChange={handleLocation}
               placeholder="City"
-              variant="filled"
+              variant="outlined"
               InputProps={{
-                disableUnderline: true,
                 startAdornment: (
                   <InputAdornment position="start">
                     <AppIcon name="map" size={20} />
                   </InputAdornment>
                 ),
                 sx: {
-                  backgroundColor: "var(--inputs)",
-                  borderRadius: "20px",
                   fontWeight: 500,
                   color: "var(--main)",
                   height: "56px",
@@ -128,7 +126,16 @@ const SidebarFilter = () => {
           {/* Vehicle equipment */}
           <FormControl component="fieldset">
             <FormLabel>Vehicle equipment</FormLabel>
-            <FormGroup row>
+            <Divider sx={{ my: 3 }} />
+            <FormGroup
+              row
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                gap: "8px",
+              }}
+            >
               {productOptions.map((opt) => (
                 <Checkbox
                   key={opt}
@@ -146,8 +153,15 @@ const SidebarFilter = () => {
           {/* Vehicle type */}
           <FormControl component="fieldset">
             <FormLabel>Vehicle type</FormLabel>
+            <Divider sx={{ my: 3 }} />
             <RadioGroup
               row
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                gap: "8px",
+              }}
               name="type"
               value={localFilter.type ?? ""}
               onChange={handleTypeChange}

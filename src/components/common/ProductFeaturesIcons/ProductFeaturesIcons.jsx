@@ -3,6 +3,8 @@ import { Stack, Chip } from "@mui/material";
 import AppIcon from "@/components/common/AppIcon/AppIcon";
 import productFeatureMap from "@/config/productFeatureMap";
 
+const strokeIcons = new Set(["microwave", "water", "gas"]);
+
 const ROW_HEIGHT = 48;
 const GAP = 8;
 
@@ -42,18 +44,28 @@ const ProductFeaturesIcons = ({ product, maxRows = 2 }) => {
         overflowY: "auto",
       }}
     >
-      {visibleFeatures.map(({ key, label }) => (
-        <Chip
-          key={key}
-          icon={<AppIcon name={key} size={20} />}
-          label={label}
-          variant="outlined"
-          sx={{
-            height: ROW_HEIGHT,
-            flexShrink: 0,
-          }}
-        />
-      ))}
+      {visibleFeatures.map(({ key, label }) => {
+        const isStroke = strokeIcons.has(key);
+        return (
+          <Chip
+            key={key}
+            icon={
+              <AppIcon
+                name={key}
+                size={20}
+                fill={isStroke ? "none" : "black"}
+                stroke={isStroke ? "black" : "none"}
+              />
+            }
+            label={label}
+            variant="outlined"
+            sx={{
+              height: ROW_HEIGHT,
+              flexShrink: 0,
+            }}
+          />
+        );
+      })}
     </Stack>
   );
 };

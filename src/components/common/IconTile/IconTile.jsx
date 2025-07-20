@@ -1,7 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import AppIcon from "@/components/common/AppIcon/AppIcon";
+import productFeatureMap from "@/config/productFeatureMap";
 
-const IconTile = ({ label, name, active = false }) => {
+const strokeIcons = new Set(["microwave", "water", "gas"]);
+
+const IconTile = ({ name, active = false }) => {
+  const isStroke = strokeIcons.has(name);
+
+  const config = productFeatureMap[name];
+  const label = config?.label || config?.options?.[name] || name;
+
   return (
     <Box
       sx={{
@@ -19,7 +27,12 @@ const IconTile = ({ label, name, active = false }) => {
         userSelect: "none",
       }}
     >
-      <AppIcon name={name} fill="none" stroke="black" size={32} />
+      <AppIcon
+        name={name}
+        size={32}
+        fill={isStroke ? "none" : "black"}
+        stroke={isStroke ? "black" : "none"}
+      />
       <Typography variant="caption" color="text.primary" sx={{ mt: 1 }}>
         {label}
       </Typography>

@@ -30,8 +30,6 @@ export const fetchProducts = createAsyncThunk(
         params.set(opt, "true");
       });
 
-      console.log(params.toString());
-
       const { data } = await productsAPI.get("/campers", { params });
       return data.items;
     } catch (error) {
