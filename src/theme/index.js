@@ -43,7 +43,12 @@ const theme = createTheme({
       lineHeight: "133%",
       color: themeVars.main,
     },
-    h6: { fontSize: "18px", fontWeight: 600 },
+    h3: {
+      fontSize: "20px",
+      fontWeight: 600,
+      lineHeight: "133%",
+      color: themeVars.main,
+    },
     body1: {
       fontSize: "16px",
       fontWeight: "400",
@@ -301,6 +306,53 @@ const theme = createTheme({
         },
         body: {
           textAlign: "left", // или "right", если нужно
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: "outlined",
+        InputLabelProps: {
+          shrink: true,
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: themeVars.inputs,
+          borderRadius: 12,
+
+          display: "flex",
+          alignItems: "center",
+
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+        },
+        input: {
+          height: "60px",
+          boxSizing: "border-box",
+          padding: "8px 14px",
+          color: themeVars.main,
+
+          "&::placeholder": {
+            color: themeVars.gray,
+            opacity: 1,
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          minHeight: "14px", // или больше, если нужен запас
         },
       },
     },
