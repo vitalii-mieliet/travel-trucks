@@ -41,8 +41,7 @@ const BookingForm = ({ product }) => {
           comment: Yup.string(),
         })}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
-          setOpen(true);
+      git    setOpen(true);
           resetForm();
         }}
       >
