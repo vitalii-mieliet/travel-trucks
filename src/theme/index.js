@@ -98,11 +98,14 @@ const theme = createTheme({
     MuiContainer: {
       styleOverrides: {
         root: {
-          maxWidth: "1440px !important",
-          paddingLeft: "64px",
-          paddingRight: "64px",
-          marginLeft: "auto",
+          maxWidth: "1440px",
           marginRight: "auto",
+          width: "100%",
+          boxSizing: "border-box",
+          paddingTop: 48,
+          paddingBottom: 80,
+          paddingLeft: 64,
+          paddingRight: 64,
         },
       },
     },

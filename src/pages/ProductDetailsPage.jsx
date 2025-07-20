@@ -24,11 +24,14 @@ const ProductDetailsPage = () => {
   const currentTab = currentPath.endsWith("reviews") ? 1 : 0;
 
   return (
-    <Container>
-      <Typography>{product.name}</Typography>
-      <ProductOverview product={product} />
-
-      <Box mt={4}>
+    <Container maxWidth="xl" disableGutters>
+      <Box mb={7.75}>
+        <Typography variant="h2" component="h2" mb={1}>
+          {product.name}
+        </Typography>
+        <ProductOverview product={product} />
+      </Box>
+      <Box mb={5.25}>
         <Tabs value={currentTab}>
           <Tab label="Features" component={Link} to="features" />
           <Tab label="Reviews" component={Link} to="reviews" />

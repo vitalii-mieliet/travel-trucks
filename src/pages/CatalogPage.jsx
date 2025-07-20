@@ -27,7 +27,7 @@ const CatalogPage = () => {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ py: 4 }}>
+    <Container maxWidth="xl" disableGutters>
       <Grid container spacing={4}>
         {/* Sidebar */}
         <Grid size={4}>
