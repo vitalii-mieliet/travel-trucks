@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Typography, Stack, Grid, Chip, Rating } from "@mui/material";
 import AppIcon from "../common/AppIcon/AppIcon";
+import theme from "@/theme";
+import { Link } from "react-router-dom";
 
 const ProductOverview = ({ product }) => {
   return (
@@ -27,10 +29,16 @@ const ProductOverview = ({ product }) => {
       {/* Info */}
       <Box mb={2}>
         <Stack direction="row" alignItems="center" spacing={1}>
-          <AppIcon name="star" fill="var(--rating)" stroke="none" />
-          <Typography>
-            {product.rating} ({product.reviews.length} Reviews)
-          </Typography>
+          <AppIcon
+            name="star"
+            fill={theme.palette.ratingStar.active}
+            stroke="none"
+          />
+          <Link to={`/catalog/${product.id}/reviews`}>
+            <Typography>
+              {product.rating} ({product.reviews.length} Reviews)
+            </Typography>
+          </Link>
 
           <AppIcon name="map" />
           <Typography>{product.location}</Typography>

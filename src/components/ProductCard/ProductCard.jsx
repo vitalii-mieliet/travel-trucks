@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import AppIcon from "../common/AppIcon/AppIcon";
 import ProductFeaturesIcons from "../common/ProductFeaturesIcons/ProductFeaturesIcons";
+import theme from "@/theme";
 
 const ProductCard = ({ product }) => {
   const { id, name, price, location, rating, reviews, description, gallery } =
@@ -69,10 +70,17 @@ const ProductCard = ({ product }) => {
 
         {/* Rating, location */}
         <Stack direction="row" spacing={1} alignItems="center" mb={3}>
-          <AppIcon name="star" fill="#FFC531" stroke="non" />
-          <Typography>
-            {rating} ({reviews.length} Reviews)
-          </Typography>
+          <AppIcon
+            name="star"
+            fill={theme.palette.ratingStar.active}
+            stroke="non"
+          />
+          <Link to={`/catalog/${id}/reviews`}>
+            <Typography>
+              {rating} ({reviews.length} Reviews)
+            </Typography>
+          </Link>
+
           <AppIcon name="map" />
           <Typography>{location}</Typography>
         </Stack>

@@ -22,6 +22,10 @@ const theme = createTheme({
       main: themeVars.button,
       hover: themeVars.buttonHover,
     },
+    ratingStar: {
+      default: themeVars.grayLight,
+      active: themeVars.rating,
+    },
   },
   typography: {
     fontFamily: themeVars.fontFamily,
