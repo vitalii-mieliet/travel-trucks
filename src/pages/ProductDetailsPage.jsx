@@ -18,7 +18,7 @@ const ProductDetailsPage = () => {
     dispatch(fetchProductById(id));
   }, [dispatch, id]);
 
-  if (!product) return <p>Loading</p>;
+  if (!product) return;
 
   const currentPath = window.location.pathname;
   const currentTab = currentPath.endsWith("reviews") ? 1 : 0;
