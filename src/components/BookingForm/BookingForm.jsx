@@ -32,7 +32,7 @@ const BookingForm = () => {
         initialValues={{
           name: "",
           email: "",
-          date: null,
+          date: "",
           comment: "",
         }}
         validationSchema={Yup.object({
@@ -44,19 +44,12 @@ const BookingForm = () => {
           comment: Yup.string(),
         })}
         onSubmit={(values, { resetForm }) => {
-          console.log(values); // пока просто выводим
-          setOpen(true); // нотификация
+          console.log(values);
+          setOpen(true);
           resetForm();
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          setFieldValue,
-        }) => (
+        {({ values, errors, touched, handleChange, handleBlur }) => (
           <Form>
             <Stack mb={1}>
               <TextField
