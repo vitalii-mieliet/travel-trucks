@@ -30,12 +30,12 @@ const CatalogPage = () => {
     <Container maxWidth="1440px" disableGutters>
       <Grid container spacing={8}>
         {/* Sidebar */}
-        <Grid size={4}>
+        <Grid sx={{ width: "360px" }}>
           <SidebarFilter />
         </Grid>
 
         {/* Product List */}
-        <Grid size={8}>
+        <Grid sx={{ flex: 1 }}>
           {error ? (
             <Box p={4} textAlign="center">
               <strong>No results found. Try changing your filters.</strong>

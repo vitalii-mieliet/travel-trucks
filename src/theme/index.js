@@ -393,6 +393,20 @@ const theme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        ul: {
+          padding: 0,
+          margin: 0,
+          listStyle: "none",
+        },
+        ol: {
+          padding: 0,
+          margin: 0,
+          listStyle: "none",
+        },
+      },
+    },
   },
 });
 
