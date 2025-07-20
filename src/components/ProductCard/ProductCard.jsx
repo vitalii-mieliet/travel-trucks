@@ -72,7 +72,7 @@ const ProductCard = ({ product }) => {
           <AppIcon
             name="star"
             fill={theme.palette.ratingStar.active}
-            stroke="non"
+            stroke="none"
           />
           <Link to={`/catalog/${id}/reviews`}>
             <Typography>

@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import themeVars from "@/styles/themeVars";
+import AppIcon from "@/components/common/AppIcon/AppIcon.jsx";
 
 const theme = createTheme({
   palette: {
@@ -352,7 +353,20 @@ const theme = createTheme({
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          minHeight: "14px", // или больше, если нужен запас
+          minHeight: "14px",
+        },
+      },
+    },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          color: themeVars.button,
+          backgroundColor: themeVars.inputs,
+          fontWeight: 600,
+          fontSize: "24px",
+          lineHeight: "133%",
+          width: "60px",
+          height: "60px",
         },
       },
     },
