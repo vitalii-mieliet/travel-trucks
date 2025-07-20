@@ -26,6 +26,10 @@ const theme = createTheme({
       default: themeVars.grayLight,
       active: themeVars.rating,
     },
+    favoriteButton: {
+      default: themeVars.main,
+      active: themeVars.button,
+    },
   },
   typography: {
     fontFamily: themeVars.fontFamily,
@@ -215,6 +219,11 @@ const theme = createTheme({
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true, // ⬅️ глобально отключает ripple у всех основанных на ButtonBase компонентов
+      },
+    },
+    MuiIconButton: {
+      defaultProps: {
+        disableRipple: true,
       },
     },
   },

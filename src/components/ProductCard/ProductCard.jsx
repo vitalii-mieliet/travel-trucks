@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import AppIcon from "../common/AppIcon/AppIcon";
 import ProductFeaturesIcons from "../common/ProductFeaturesIcons/ProductFeaturesIcons";
 import theme from "@/theme";
+import FavoriteButton from "../common/FavoriteButton/FavoriteButton";
 
 const ProductCard = ({ product }) => {
   const { id, name, price, location, rating, reviews, description, gallery } =
@@ -62,9 +63,7 @@ const ProductCard = ({ product }) => {
           </Typography>
           <Box display="flex" alignItems="center" gap={1}>
             <Typography variant="h3">€{price}.00</Typography>
-            <IconButton>
-              <AppIcon name="heart" stroke="black" size={24} />
-            </IconButton>
+            <FavoriteButton productId={product.id} />
           </Box>
         </Box>
 
