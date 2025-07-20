@@ -4,7 +4,6 @@ import { fetchProducts } from "@/redux/products/productsOps";
 import {
   selectError,
   selectFilter,
-  // selectIsLoading,
   selectProducts,
 } from "@/redux/products/productsSelectors";
 import { setFilter } from "@/redux/products/productsSlice";
