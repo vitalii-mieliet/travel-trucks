@@ -9,6 +9,8 @@ export const productsSlice = createSlice({
       location: null,
       type: null,
       options: [],
+      transmission: null,
+      engine: null,
       page: 1,
       limit: 4,
     },
@@ -22,10 +24,14 @@ export const productsSlice = createSlice({
       state.itemDetails = null;
     },
     setFilter: (state, action) => {
-      const { location, type, options, page, limit } = action.payload;
+      const { location, type, options, engine, transmission, page, limit } =
+        action.payload;
       if ("location" in action.payload) state.filter.location = location;
       if ("type" in action.payload) state.filter.type = type;
       if ("options" in action.payload) state.filter.options = options;
+      if ("transmission" in action.payload)
+        state.filter.transmission = transmission;
+      if ("engine" in action.payload) state.filter.engine = engine;
       if ("page" in action.payload) state.filter.page = page;
       if ("limit" in action.payload) state.filter.limit = limit;
     },
@@ -33,6 +39,8 @@ export const productsSlice = createSlice({
       state.filter = {
         location: null,
         type: null,
+        transmission: null,
+        engine: null,
         options: [],
         page: 1,
         limit: 4,

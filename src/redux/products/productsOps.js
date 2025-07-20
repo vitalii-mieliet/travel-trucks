@@ -25,6 +25,8 @@ export const fetchProducts = createAsyncThunk(
 
       if (filter.location) params.set("location", filter.location);
       if (filter.type) params.set("form", filter.type);
+      if (filter.engine) params.set("engine", filter.engine);
+      if (filter.transmissione) params.set("transmission", filter.transmission);
 
       filter.options.forEach((opt) => {
         params.set(opt, "true");

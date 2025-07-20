@@ -29,6 +29,8 @@ const initialFilter = {
   location: "",
   options: [],
   type: null,
+  transmission: null,
+  engine: null,
 };
 
 const SidebarFilter = () => {
@@ -49,10 +51,18 @@ const SidebarFilter = () => {
     }));
   };
 
-  const handleTypeChange = (e) => {
+  // const handleTypeChange = (e) => {
+  //   setLocalFilter((prev) => ({
+  //     ...prev,
+  //     type: e.target.value || null,
+  //   }));
+  // };
+
+  const handleSelectChange = (e) => {
+    const { name, value } = e.target;
     setLocalFilter((prev) => ({
       ...prev,
-      type: e.target.value || null,
+      [name]: value || null,
     }));
   };
 
@@ -164,7 +174,7 @@ const SidebarFilter = () => {
               row
               name="type"
               value={localFilter.type ?? ""}
-              onChange={handleTypeChange}
+              onChange={handleSelectChange}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -191,6 +201,62 @@ const SidebarFilter = () => {
                   }
                 />
               ))}
+            </RadioGroup>
+          </FormControl>
+
+          <FormControl component="fieldset" sx={{ mb: 4 }}>
+            <FormLabel>Transmission</FormLabel>
+            <Divider sx={{ my: 3 }} />
+            <RadioGroup
+              row
+              name="transmission"
+              value={localFilter.transmission ?? ""}
+              onChange={handleSelectChange}
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                gap: "8px",
+              }}
+            >
+              {Object.entries(productFeatureMap.transmission.options).map(
+                ([value, label]) => (
+                  <Radio
+                    key={value}
+                    value={value}
+                    icon={<IconTile name={value} label={label} />}
+                    checkedIcon={<IconTile name={value} label={label} active />}
+                  />
+                )
+              )}
+            </RadioGroup>
+          </FormControl>
+
+          <FormControl component="fieldset" sx={{ mb: 4 }}>
+            <FormLabel>Engine</FormLabel>
+            <Divider sx={{ my: 3 }} />
+            <RadioGroup
+              row
+              name="engine"
+              value={localFilter.engine ?? ""}
+              onChange={handleSelectChange}
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                gap: "8px",
+              }}
+            >
+              {Object.entries(productFeatureMap.engine.options).map(
+                ([value, label]) => (
+                  <Radio
+                    key={value}
+                    value={value}
+                    icon={<IconTile name={value} label={label} />}
+                    checkedIcon={<IconTile name={value} label={label} active />}
+                  />
+                )
+              )}
             </RadioGroup>
           </FormControl>
 
