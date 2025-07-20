@@ -30,10 +30,14 @@ const theme = createTheme({
       default: themeVars.main,
       active: themeVars.button,
     },
+    aditional: {
+      inputs: themeVars.inputs,
+      badges: themeVars.badges,
+    },
   },
   typography: {
     fontFamily: themeVars.fontFamily,
-    h3: {
+    h2: {
       fontSize: "24px",
       fontWeight: "600",
       lineHeight: "133%",
@@ -185,8 +189,16 @@ const theme = createTheme({
         root: {
           borderRadius: "100px",
           padding: "12px 18px",
+          backgroundColor: themeVars.badges,
+          mixBlendMode: "multiply",
+          border: "none",
+
+          fontFamily: '"Inter", sans-serif',
           fontWeight: 500,
           fontSize: 16,
+          lineHeight: "150%",
+          textAlign: "center",
+          color: themeVars.primary,
         },
       },
     },
@@ -224,6 +236,69 @@ const theme = createTheme({
     MuiIconButton: {
       defaultProps: {
         disableRipple: true,
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          borderBottom: `1px solid ${themeVars.border}`,
+        },
+        indicator: {
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "transparent",
+          height: "6px",
+          marginTop: "24px", // ⬅️ расстояние от таба до индикатора
+          "&::before": {
+            content: '""',
+            display: "block",
+            width: "85px",
+            height: "6px",
+            backgroundColor: themeVars.button,
+            borderRadius: "3px",
+          },
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          fontFamily: themeVars.fontFamily,
+          fontWeight: 600,
+          fontSize: "20px",
+          lineHeight: "120%",
+          textTransform: "none",
+          color: themeVars.text,
+          padding: 0, // ⬅️ обнуление паддингов
+          minHeight: "auto", // ⬅️ убрать лишнюю высоту
+          minWidth: "auto",
+          marginRight: "40px",
+
+          "&:last-of-type": {
+            marginRight: 0, // ⬅️ убираем отступ у последнего таба
+          },
+
+          "&.Mui-selected": {
+            color: themeVars.text,
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontFamily: themeVars.fontFamily,
+          fontWeight: 500,
+          fontSize: "16px",
+          lineHeight: "150%",
+          color: themeVars.main,
+        },
+        head: {
+          textAlign: "center",
+        },
+        body: {
+          textAlign: "left", // или "right", если нужно
+        },
       },
     },
   },

@@ -3,7 +3,11 @@ import { Stack, Chip } from "@mui/material";
 import AppIcon from "@/components/common/AppIcon/AppIcon";
 import productFeatureMap from "@/config/productFeatureMap";
 
-const ProductFeaturesIcons = ({ product }) => {
+const ROW_HEIGHT = 48;
+const GAP = 8;
+
+const ProductFeaturesIcons = ({ product, maxRows = 2 }) => {
+  const maxHeight = ROW_HEIGHT * maxRows + GAP * (maxRows - 1);
   const visibleFeatures = [];
 
   for (const [key, config] of Object.entries(productFeatureMap)) {
@@ -28,13 +32,26 @@ const ProductFeaturesIcons = ({ product }) => {
   }
 
   return (
-    <Stack direction="row" flexWrap="wrap" useFlexGap sx={{ gap: "8px" }}>
+    <Stack
+      direction="row"
+      flexWrap="wrap"
+      useFlexGap
+      sx={{
+        gap: `${GAP}px`,
+        maxHeight: `${maxHeight}px`,
+        overflowY: "auto",
+      }}
+    >
       {visibleFeatures.map(({ key, label }) => (
         <Chip
           key={key}
           icon={<AppIcon name={key} size={20} />}
           label={label}
           variant="outlined"
+          sx={{
+            height: ROW_HEIGHT,
+            flexShrink: 0,
+          }}
         />
       ))}
     </Stack>
