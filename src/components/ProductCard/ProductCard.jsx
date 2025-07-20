@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
           justifyContent="space-between"
           alignItems="flex-start"
         >
-          <Typography variant="h2" component="h2">
+          <Typography variant="h2" component="h2" noWrap mr={1}>
             {name}
           </Typography>
           <Box display="flex" alignItems="center" gap={1}>
@@ -85,17 +85,7 @@ const ProductCard = ({ product }) => {
         </Stack>
 
         {/* Description */}
-        <Typography
-          variant="body-2"
-          mb={3}
-          sx={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            minWidth: 0,
-            maxWidth: "100%",
-          }}
-        >
+        <Typography variant="body-2" mb={3} noWrap mr={2}>
           {description}
         </Typography>
 
