@@ -4,11 +4,10 @@ import productFeatureMap from "@/config/productFeatureMap";
 
 const strokeIcons = new Set(["microwave", "water", "gas"]);
 
-const IconTile = ({ name, active = false }) => {
+const IconTile = ({ name, label: customLabel, active = false }) => {
   const isStroke = strokeIcons.has(name);
-
   const config = productFeatureMap[name];
-  const label = config?.label || config?.options?.[name] || name;
+  const label = customLabel ?? config?.label ?? config?.options?.[name] ?? name;
 
   return (
     <Box

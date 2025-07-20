@@ -18,19 +18,12 @@ import { useState } from "react";
 import { setFilter, resetFilter } from "@/redux/products/productsSlice";
 import IconTile from "@/components/common/IconTile/IconTile";
 import AppIcon from "../common/AppIcon/AppIcon";
+import productFeatureMap from "@/config/productFeatureMap";
 
-const productTypes = ["alcove", "fullyIntegrated", "panelTruck"];
-const productOptions = [
-  "AC",
-  "kitchen",
-  "bathroom",
-  "TV",
-  "radio",
-  "refrigerator",
-  "microwave",
-  "gas",
-  "water",
-];
+const productTypes = Object.keys(productFeatureMap.form.options);
+const productOptions = Object.entries(productFeatureMap)
+  .filter(([, config]) => config.type === "boolean")
+  .map(([key]) => key);
 
 const initialFilter = {
   location: "",
@@ -148,8 +141,16 @@ const SidebarFilter = () => {
                   value={opt}
                   checked={localFilter.options.includes(opt)}
                   onChange={handleOptionChange}
-                  icon={<IconTile label={opt} name={opt} />}
-                  checkedIcon={<IconTile label={opt} name={opt} active />}
+                  icon={
+                    <IconTile label={productFeatureMap[opt].label} name={opt} />
+                  }
+                  checkedIcon={
+                    <IconTile
+                      label={productFeatureMap[opt].label}
+                      name={opt}
+                      active
+                    />
+                  }
                 />
               ))}
             </FormGroup>
@@ -161,22 +162,33 @@ const SidebarFilter = () => {
             <Divider sx={{ my: 3 }} />
             <RadioGroup
               row
+              name="type"
+              value={localFilter.type ?? ""}
+              onChange={handleTypeChange}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "space-between",
                 gap: "8px",
               }}
-              name="type"
-              value={localFilter.type ?? ""}
-              onChange={handleTypeChange}
             >
               {productTypes.map((type) => (
                 <Radio
                   key={type}
                   value={type}
-                  icon={<IconTile label={type} name={type} />}
-                  checkedIcon={<IconTile label={type} name={type} active />}
+                  icon={
+                    <IconTile
+                      name={type}
+                      label={productFeatureMap.form.options[type]} // <-- читаемое имя
+                    />
+                  }
+                  checkedIcon={
+                    <IconTile
+                      name={type}
+                      label={productFeatureMap.form.options[type]}
+                      active
+                    />
+                  }
                 />
               ))}
             </RadioGroup>
