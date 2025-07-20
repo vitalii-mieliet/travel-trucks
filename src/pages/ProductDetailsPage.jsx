@@ -43,7 +43,7 @@ const ProductDetailsPage = () => {
           <Outlet context={product} />
         </Grid>
         <Grid size={1}>
-          <BookingForm />
+          <BookingForm product={product} />
         </Grid>
       </Grid>
     </Container>

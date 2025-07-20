@@ -7,15 +7,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 
-const BookingForm = () => {
+const BookingForm = ({ product }) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
@@ -88,18 +85,6 @@ const BookingForm = () => {
                 InputLabelProps={{ shrink: true, style: { display: "none" } }}
               />
 
-              {/* <LocalizationProvider
-                dateAdapter={AdapterDateFns}
-                adapterLocale={enUS}
-              >
-                <DatePicker
-                  name="date"
-                  label="Booking date*"
-                  value={values.date}
-                  onChange={(newValue) => setFieldValue(newValue)}
-                />
-              </LocalizationProvider> */}
-
               <TextField
                 fullWidth
                 name="date"
@@ -153,7 +138,7 @@ const BookingForm = () => {
                 severity="success"
                 sx={{ width: "100%" }}
               >
-                Form submitted successfully!
+                Camper {product.name} were successfully booked!
               </Alert>
             </Snackbar>
           </Form>
