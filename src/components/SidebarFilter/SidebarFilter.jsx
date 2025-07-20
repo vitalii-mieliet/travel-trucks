@@ -11,6 +11,7 @@ import {
   FormLabel,
   InputAdornment,
   Divider,
+  Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -75,9 +76,9 @@ const SidebarFilter = () => {
   return (
     <Box component="aside">
       <Box component="form" onSubmit={handleSearch}>
-        <Stack spacing={4}>
+        <Stack>
           {/* Location */}
-          <FormControl fullWidth>
+          <FormControl fullWidth sx={{ mb: 5 }}>
             <FormLabel
               sx={{
                 color: "var(--text)",
@@ -123,8 +124,12 @@ const SidebarFilter = () => {
             />
           </FormControl>
 
+          <Typography mb={4} variant="h5">
+            Filter
+          </Typography>
+
           {/* Vehicle equipment */}
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" sx={{ mb: 4 }}>
             <FormLabel>Vehicle equipment</FormLabel>
             <Divider sx={{ my: 3 }} />
             <FormGroup
@@ -151,7 +156,7 @@ const SidebarFilter = () => {
           </FormControl>
 
           {/* Vehicle type */}
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" sx={{ mb: 4 }}>
             <FormLabel>Vehicle type</FormLabel>
             <Divider sx={{ my: 3 }} />
             <RadioGroup

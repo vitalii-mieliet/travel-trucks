@@ -56,6 +56,12 @@ const theme = createTheme({
       lineHeight: "133%",
       color: themeVars.main,
     },
+    h5: {
+      fontSize: "16px",
+      fontWeight: 500,
+      lineHeight: "150%",
+      color: themeVars.text,
+    },
     h6: {
       fontSize: "24px",
       fontWeight: 600,
