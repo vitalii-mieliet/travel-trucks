@@ -12,17 +12,15 @@ import {
 import storage from "redux-persist/lib/storage";
 import productsReducer from "@/redux/products/productsSlice";
 import favoritesReducer from "@/redux/favorites/favoritesSlice";
-import bookingFormReducer from "@/redux/bookingForm/bookingFormSlice";
 
 const persistConfig = {
   key: "CAMP_KEY",
   storage,
-  whitelist: ["favorites", "bookingForm"],
+  whitelist: ["favorites"],
 };
 const rootReducer = combineReducers({
   products: productsReducer,
   favorites: favoritesReducer,
-  bookingForm: bookingFormReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
