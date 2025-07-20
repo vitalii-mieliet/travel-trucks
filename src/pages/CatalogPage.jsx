@@ -1,15 +1,15 @@
 import ProductList from "@/components/ProductList/ProductList";
 import SidebarFilter from "@/components/SidebarFilter/SidebarFilter";
 import { fetchProducts } from "@/redux/products/productsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "@/redux/products/productsSlice";
+import { Box, Button, Container, Grid } from "@mui/material";
+import { useEffect } from "react";
 import {
   selectError,
   selectFilter,
   selectProducts,
 } from "@/redux/products/productsSelectors";
-import { setFilter } from "@/redux/products/productsSlice";
-import { Box, Button, Container, Grid } from "@mui/material";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();

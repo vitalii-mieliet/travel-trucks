@@ -23,10 +23,10 @@ const ProductReviews = () => {
         Reviews
       </Typography>
 
-      <List spacing={3}>
+      <Stack component={"ul"} spacing={5.5}>
         {reviews.map((review, index) => (
           <ListItem key={index}>
-            <Stack mb={5.5}>
+            <Stack spacing={2}>
               <Stack direction="row" spacing={2} alignItems="center">
                 <Avatar>{review.reviewer_name[0]}</Avatar>
                 <Stack spacing={0.5}>
@@ -61,7 +61,7 @@ const ProductReviews = () => {
             {index < reviews.length - 1 && <Divider sx={{ mt: 3 }} />}
           </ListItem>
         ))}
-      </List>
+      </Stack>
     </Box>
   );
 };
