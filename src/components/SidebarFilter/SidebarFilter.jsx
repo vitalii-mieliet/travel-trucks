@@ -51,13 +51,6 @@ const SidebarFilter = () => {
     }));
   };
 
-  // const handleTypeChange = (e) => {
-  //   setLocalFilter((prev) => ({
-  //     ...prev,
-  //     type: e.target.value || null,
-  //   }));
-  // };
-
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
     setLocalFilter((prev) => ({
@@ -140,8 +133,8 @@ const SidebarFilter = () => {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "space-between",
-                gap: "8px",
+                columnGap: "12px",
+                rowGap: "8px",
               }}
             >
               {productOptions.map((opt) => (
@@ -178,8 +171,8 @@ const SidebarFilter = () => {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "space-between",
-                gap: "8px",
+                columnGap: "12px",
+                rowGap: "8px",
               }}
             >
               {productTypes.map((type) => (
@@ -215,8 +208,8 @@ const SidebarFilter = () => {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "space-between",
-                gap: "8px",
+                columnGap: "12px",
+                rowGap: "8px",
               }}
             >
               {Object.entries(productFeatureMap.transmission.options).map(
@@ -224,8 +217,21 @@ const SidebarFilter = () => {
                   <Radio
                     key={value}
                     value={value}
-                    icon={<IconTile name={value} label={label} />}
-                    checkedIcon={<IconTile name={value} label={label} active />}
+                    icon={
+                      <IconTile
+                        iconName={`transmission-${value}`}
+                        name={value}
+                        label={label}
+                      />
+                    }
+                    checkedIcon={
+                      <IconTile
+                        iconName={`transmission-${value}`}
+                        name={value}
+                        label={label}
+                        active
+                      />
+                    }
                   />
                 )
               )}
@@ -243,8 +249,8 @@ const SidebarFilter = () => {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                justifyContent: "space-between",
-                gap: "8px",
+                columnGap: "12px",
+                rowGap: "8px",
               }}
             >
               {Object.entries(productFeatureMap.engine.options).map(
@@ -252,8 +258,21 @@ const SidebarFilter = () => {
                   <Radio
                     key={value}
                     value={value}
-                    icon={<IconTile name={value} label={label} />}
-                    checkedIcon={<IconTile name={value} label={label} active />}
+                    icon={
+                      <IconTile
+                        iconName={`engine-${value}`}
+                        name={value}
+                        label={label}
+                      />
+                    }
+                    checkedIcon={
+                      <IconTile
+                        iconName={`engine-${value}`}
+                        name={value}
+                        label={label}
+                        active
+                      />
+                    }
                   />
                 )
               )}

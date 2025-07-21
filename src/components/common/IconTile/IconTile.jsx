@@ -4,8 +4,15 @@ import productFeatureMap from "@/config/productFeatureMap";
 
 const strokeIcons = new Set(["microwave", "water", "gas"]);
 
-const IconTile = ({ name, label: customLabel, active = false }) => {
-  const isStroke = strokeIcons.has(name);
+const IconTile = ({ name, label: customLabel, iconName, active = false }) => {
+  const finalIcon = iconName ?? name;
+
+  const [category, key] = finalIcon.includes("-")
+    ? finalIcon.split("-")
+    : [undefined, finalIcon];
+
+  const isStroke = !category && strokeIcons.has(key);
+
   const config = productFeatureMap[name];
   const label = customLabel ?? config?.label ?? config?.options?.[name] ?? name;
 
@@ -27,7 +34,7 @@ const IconTile = ({ name, label: customLabel, active = false }) => {
       }}
     >
       <AppIcon
-        name={name}
+        name={finalIcon}
         size={32}
         fill={isStroke ? "none" : "black"}
         stroke={isStroke ? "black" : "none"}
