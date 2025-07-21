@@ -17,8 +17,8 @@ const ProductFeaturesIcons = ({ product, maxRows = 2 }) => {
 
     if (config.type === "boolean" && value === true) {
       visibleFeatures.push({
-        key,
         label: config.label,
+        iconName: key,
       });
     }
 
@@ -26,8 +26,8 @@ const ProductFeaturesIcons = ({ product, maxRows = 2 }) => {
       const label = config.options?.[value];
       if (label) {
         visibleFeatures.push({
-          key,
           label,
+          iconName: `${key}-${value}`,
         });
       }
     }
@@ -44,14 +44,19 @@ const ProductFeaturesIcons = ({ product, maxRows = 2 }) => {
         overflowY: "auto",
       }}
     >
-      {visibleFeatures.map(({ key, label }) => {
-        const isStroke = strokeIcons.has(key);
+      {visibleFeatures.map(({ label, iconName }) => {
+        const strokeKey = iconName.includes("-")
+          ? iconName.split("-").pop()
+          : iconName;
+
+        const isStroke = strokeIcons.has(strokeKey);
+
         return (
           <Chip
-            key={key}
+            key={iconName}
             icon={
               <AppIcon
-                name={key}
+                name={iconName}
                 size={20}
                 fill={isStroke ? "none" : "black"}
                 stroke={isStroke ? "black" : "none"}
