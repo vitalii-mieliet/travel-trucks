@@ -280,7 +280,7 @@ const SidebarFilter = () => {
           </FormControl>
 
           {/* Buttons */}
-          <Box display="flex" gap={2}>
+          <Box display="flex" justifyContent="space-between">
             <Button type="submit" variant="contained">
               Search
             </Button>
