@@ -11,6 +11,8 @@ import {
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
+import { DatePicker } from "@mui/x-date-pickers";
+import AppDatePicker from "../AppDatePicker/AppDatePicker";
 
 const BookingForm = ({ product }) => {
   const [open, setOpen] = useState(false);
@@ -29,7 +31,7 @@ const BookingForm = ({ product }) => {
         initialValues={{
           name: "",
           email: "",
-          date: "",
+          date: null,
           comment: "",
         }}
         validationSchema={Yup.object({
@@ -41,14 +43,23 @@ const BookingForm = ({ product }) => {
           comment: Yup.string(),
         })}
         onSubmit={(values, { resetForm }) => {
+          console.log(values);
           setOpen(true);
           resetForm();
         }}
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          setFieldValue,
+        }) => (
           <Form>
             <Stack mb={1}>
               <TextField
+                label="Name"
                 fullWidth
                 name="name"
                 placeholder="Name*"
@@ -68,6 +79,7 @@ const BookingForm = ({ product }) => {
 
               <TextField
                 fullWidth
+                label="Email"
                 name="email"
                 placeholder="Email*"
                 value={values.email}
@@ -83,28 +95,19 @@ const BookingForm = ({ product }) => {
                 }}
                 InputLabelProps={{ shrink: true, style: { display: "none" } }}
               />
-
-              <TextField
-                fullWidth
-                name="date"
-                placeholder="Booking date*"
-                type="date"
-                value={values.date}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.date && Boolean(errors.date)}
-                helperText={(touched.date && errors.date) || " "}
-                FormHelperTextProps={{
-                  sx: {
-                    minHeight: "14px",
-                    marginTop: 0,
-                  },
+              <AppDatePicker
+                {...{
+                  values,
+                  errors,
+                  touched,
+                  handleBlur,
+                  setFieldValue,
                 }}
-                InputLabelProps={{ shrink: true, style: { display: "none" } }}
               />
 
               <TextField
                 fullWidth
+                label="Comment"
                 name="comment"
                 placeholder="Comment"
                 multiline
