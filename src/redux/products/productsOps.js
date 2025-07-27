@@ -33,7 +33,7 @@ export const fetchProducts = createAsyncThunk(
       });
 
       const { data } = await productsAPI.get("/campers", { params });
-      return data.items;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

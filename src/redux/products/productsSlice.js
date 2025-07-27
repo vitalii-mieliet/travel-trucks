@@ -1,24 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { fetchProductById, fetchProducts } from "./productsOps";
+
+const productsAdapter = createEntityAdapter({
+  selectId: (product) => product.id,
+});
+
+const initialFilter = {
+  location: null,
+  type: null,
+  options: [],
+  transmission: null,
+  engine: null,
+  page: 1,
+  limit: 4,
+};
+
+const initialState = productsAdapter.getInitialState({
+  filter: initialFilter,
+  itemDetails: null,
+  total: 0,
+  isLoading: false,
+  isError: false,
+  error: null,
+});
 
 export const productsSlice = createSlice({
   name: "products",
-  initialState: {
-    items: [],
-    filter: {
-      location: null,
-      type: null,
-      options: [],
-      transmission: null,
-      engine: null,
-      page: 1,
-      limit: 4,
-    },
-    itemDetails: null,
-    isLoading: false,
-    isError: false,
-    error: null,
-  },
+  initialState,
+
   reducers: {
     resetItemDetails: (state) => {
       state.itemDetails = null;
@@ -55,14 +64,14 @@ export const productsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
+        const { items, total } = action.payload;
         state.isLoading = false;
+        state.total = total;
         if (state.filter.page === 1) {
-          state.items = action.payload;
+          productsAdapter.setAll(state, items);
         } else {
-          state.items = [...state.items, ...action.payload];
+          productsAdapter.upsertMany(state, items);
         }
-        state.isError = false;
-        state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
@@ -77,8 +86,6 @@ export const productsSlice = createSlice({
       .addCase(fetchProductById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.itemDetails = action.payload;
-        state.isError = false;
-        state.error = null;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.isLoading = false;
@@ -90,3 +97,4 @@ export const productsSlice = createSlice({
 export default productsSlice.reducer;
 export const { resetItemDetails, setFilter, resetFilter } =
   productsSlice.actions;
+export { productsAdapter };

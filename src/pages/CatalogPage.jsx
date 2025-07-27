@@ -6,6 +6,7 @@ import { setFilter } from "@/redux/products/productsSlice";
 import { Box, Button, Container, Grid } from "@mui/material";
 import { useEffect } from "react";
 import {
+  selectCanLoadMore,
   selectError,
   selectFilter,
   selectProducts,
@@ -14,8 +15,9 @@ import {
 const CatalogPage = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
-  const productList = useSelector(selectProducts);
+  const products = useSelector(selectProducts.selectAll);
   const error = useSelector(selectError);
+  const canLoadMore = useSelector(selectCanLoadMore);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -41,10 +43,10 @@ const CatalogPage = () => {
             </Box>
           ) : (
             <>
-              <ProductList products={productList} />
+              <ProductList products={products} />
 
               {/* Load more button */}
-              {productList.length > 0 && (
+              {canLoadMore && (
                 <Box textAlign="center" mt={3}>
                   <Button variant="outlined" onClick={handleLoadMoreBtn}>
                     Load more
