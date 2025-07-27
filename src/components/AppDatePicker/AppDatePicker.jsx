@@ -1,5 +1,5 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
@@ -12,10 +12,11 @@ const AppDatePicker = ({
   setFieldValue,
 }) => {
   const [open, setOpen] = useState(false);
+  const dateFieldRef = useRef(null);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault;
+      e.preventDefault();
       setOpen(true);
     }
   };
@@ -34,7 +35,12 @@ const AppDatePicker = ({
           enableAccessibleFieldDOMStructure={false}
           format="DD.MM.YYYY"
           slotProps={{
+            popper: {
+              anchorEl: dateFieldRef.current,
+              placement: "bottom",
+            },
             textField: {
+              ref: dateFieldRef,
               name: "date",
               error: touched.date && Boolean(errors.date),
               helperText: (touched.date && errors.date) || " ",
