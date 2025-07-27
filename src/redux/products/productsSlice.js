@@ -51,6 +51,8 @@ export const productsSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -59,6 +61,8 @@ export const productsSlice = createSlice({
         } else {
           state.items = [...state.items, ...action.payload];
         }
+        state.isError = false;
+        state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
@@ -67,10 +71,14 @@ export const productsSlice = createSlice({
       })
       .addCase(fetchProductById.pending, (state) => {
         state.isLoading = true;
+        state.isError = false;
+        state.error = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.itemDetails = action.payload;
+        state.isError = false;
+        state.error = null;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
         state.isLoading = false;
