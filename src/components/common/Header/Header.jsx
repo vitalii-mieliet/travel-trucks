@@ -4,14 +4,28 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import { Container, Icon } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
+import {
+  Container,
+  Icon,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/icons/Logo.svg";
-
-import NavButton from "../NavButton/NavButton";
+import { DesktopMenu, MobileMenu } from "./HeaderMenus";
+import { mediaTo } from "@/theme/media";
 
 const Header = () => {
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(mediaTo(theme, "md"));
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
   return (
     <AppBar position="static">
       <Toolbar disableGutters>
@@ -22,10 +36,20 @@ const Header = () => {
         >
           <img src={logo} alt="Logo" />
         </Box>
-        <Box sx={{ display: "flex", gap: 4, margin: "0 auto" }}>
-          <NavButton to="/">Home</NavButton>
-          <NavButton to="/catalog">Catalog</NavButton>
-        </Box>
+        {isMobile ? (
+          <IconButton
+            edge="end"
+            onClick={toggleDrawer(true)}
+            aria-label="open menu"
+            sx={{ marginLeft: "auto", ...(open && { display: "none" }) }}
+          >
+            <MenuIcon />
+          </IconButton>
+        ) : (
+          <DesktopMenu />
+        )}
+
+        <MobileMenu open={open} toggleDrawer={toggleDrawer} />
       </Toolbar>
     </AppBar>
   );

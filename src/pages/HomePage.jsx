@@ -14,14 +14,26 @@ const HomePage = () => {
     )`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "calc(100vh - 80px)",
+        height: "calc(100vh - 72px)",
         display: "flex",
         alignItems: "center",
       }}
     >
       <Container maxWidth="1440px" disableGutters>
-        <Box>
-          <Typography variant="h1" component="h1" mb={2}>
+        <Box
+          sx={{
+            textAlign: { xs: "center", md: "left" },
+          }}
+        >
+          <Typography
+            variant="h1"
+            component="h1"
+            mb={2}
+            sx={{
+              fontSize: { sm: "48px" },
+              lineHeight: { md: 1, lg: 0.67 },
+            }}
+          >
             Campers of your dreams
           </Typography>
           <Typography variant="h6" component="p" mb={5}>

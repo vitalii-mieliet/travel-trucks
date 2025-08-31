@@ -1,8 +1,18 @@
 import { createTheme } from "@mui/material/styles";
 import themeVars from "@/styles/themeVars";
 import AppIcon from "@/components/common/AppIcon/AppIcon.jsx";
+import { mediaFrom } from "./media";
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 320,
+      sm: 375,
+      md: 768,
+      lg: 1024,
+      xl: 1440,
+    },
+  },
   palette: {
     primary: { main: themeVars.main },
     secondary: { main: themeVars.text },
@@ -39,9 +49,9 @@ const theme = createTheme({
   typography: {
     fontFamily: themeVars.fontFamily,
     h1: {
-      fontSize: "48px",
+      fontSize: "42px",
       fontWeight: "600",
-      lineHeight: "67%",
+      lineHeight: "122%",
       color: themeVars.white,
     },
     h2: {
@@ -90,6 +100,11 @@ const theme = createTheme({
   shape: {
     borderRadius: 12,
   },
+  mixins: {
+    toolbar: {
+      minHeight: 72,
+    },
+  },
   components: {
     MuiAppBar: {
       defaultProps: {
@@ -99,38 +114,58 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: themeVars.inputs,
-          color: "var(--main)", // цвет текста/иконок
+          color: "var(--main)",
         },
       },
     },
     MuiToolbar: {
       styleOverrides: {
-        root: {
-          maxWidth: "1440px",
-          paddingLeft: "64px",
-          paddingRight: "64px",
+        root: ({ theme }) => ({
+          maxWidth: "375px",
+          paddingLeft: "16px",
+          paddingRight: "16px",
           marginLeft: "auto",
           marginRight: "auto",
           width: "100%",
-          minHeight: "80px",
-          "@media (min-width:600px)": {
-            minHeight: "80px",
+          [mediaFrom(theme, "md")]: {
+            maxWidth: "768px",
+            paddingLeft: "32px",
+            paddingRight: "32px",
           },
-        },
+          [mediaFrom(theme, "lg")]: {
+            maxWidth: "1440px",
+            paddingLeft: "64px",
+            paddingRight: "64px",
+          },
+        }),
       },
     },
     MuiContainer: {
       styleOverrides: {
-        root: {
-          maxWidth: "1440px",
-          marginRight: "auto",
+        root: ({ theme }) => ({
+          maxWidth: "375px",
           width: "100%",
           boxSizing: "border-box",
           paddingTop: 48,
           paddingBottom: 80,
-          paddingLeft: 64,
-          paddingRight: 64,
-        },
+          paddingLeft: 16,
+          paddingRight: 16,
+          [mediaFrom(theme, "md")]: {
+            maxWidth: "768px",
+            width: "100%",
+            paddingTop: 48,
+            paddingBottom: 80,
+            paddingLeft: 32,
+            paddingRight: 32,
+          },
+          [mediaFrom(theme, "lg")]: {
+            maxWidth: "1440px",
+            paddingTop: 48,
+            paddingBottom: 80,
+            paddingLeft: 64,
+            paddingRight: 64,
+          },
+        }),
       },
     },
     MuiCard: {
@@ -257,7 +292,7 @@ const theme = createTheme({
     },
     MuiButtonBase: {
       defaultProps: {
-        disableRipple: true, // ⬅️ глобально отключает ripple у всех основанных на ButtonBase компонентов
+        disableRipple: true,
       },
     },
     MuiIconButton: {
@@ -275,7 +310,7 @@ const theme = createTheme({
           justifyContent: "center",
           backgroundColor: "transparent",
           height: "6px",
-          marginTop: "24px", // ⬅️ расстояние от таба до индикатора
+          marginTop: "24px",
           "&::before": {
             content: '""',
             display: "block",
@@ -296,13 +331,13 @@ const theme = createTheme({
           lineHeight: "120%",
           textTransform: "none",
           color: themeVars.text,
-          padding: 0, // ⬅️ обнуление паддингов
-          minHeight: "auto", // ⬅️ убрать лишнюю высоту
+          padding: 0,
+          minHeight: "auto",
           minWidth: "auto",
           marginRight: "40px",
 
           "&:last-of-type": {
-            marginRight: 0, // ⬅️ убираем отступ у последнего таба
+            marginRight: 0,
           },
 
           "&.Mui-selected": {
@@ -324,7 +359,7 @@ const theme = createTheme({
           textAlign: "center",
         },
         body: {
-          textAlign: "left", // или "right", если нужно
+          textAlign: "left",
         },
       },
     },
