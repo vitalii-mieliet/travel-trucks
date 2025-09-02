@@ -13,36 +13,29 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { setFilter, resetFilter } from "@/redux/products/productsSlice";
 import IconTile from "@/components/common/IconTile/IconTile";
 import AppIcon from "../common/AppIcon/AppIcon";
 import productFeatureMap from "@/config/productFeatureMap";
+import { selectFilter } from "@/redux/products/productsSelectors";
 
 const productTypes = Object.keys(productFeatureMap.form.options);
 const productOptions = Object.entries(productFeatureMap)
   .filter(([, config]) => config.type === "boolean")
   .map(([key]) => key);
 
-const initialFilter = {
-  location: "",
-  options: [],
-  type: null,
-  transmission: null,
-  engine: null,
-};
-
-const SidebarFilter = () => {
+const SidebarFilter = ({ toggleFilters }) => {
   const dispatch = useDispatch();
-  const [localFilter, setLocalFilter] = useState(initialFilter);
+  const filter = useSelector(selectFilter);
+  const [localFilter, setLocalFilter] = useState(filter);
 
-  const handleLocation = (e) => {
-    setLocalFilter((prev) => ({ ...prev, location: e.target.value }));
+  const handleChange = (name, value) => {
+    setLocalFilter((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleOptionChange = (e) => {
-    const { value, checked } = e.target;
+  const handleCheckboxToggle = (value, checked) => {
     setLocalFilter((prev) => ({
       ...prev,
       options: checked
@@ -51,22 +44,16 @@ const SidebarFilter = () => {
     }));
   };
 
-  const handleSelectChange = (e) => {
-    const { name, value } = e.target;
-    setLocalFilter((prev) => ({
-      ...prev,
-      [name]: value || null,
-    }));
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(setFilter({ ...localFilter, page: 1 }));
+    toggleFilters?.(false);
   };
 
   const handleReset = () => {
-    setLocalFilter(initialFilter);
+    setLocalFilter(filter);
     dispatch(resetFilter());
+    toggleFilters?.(false);
   };
 
   return (
@@ -89,7 +76,7 @@ const SidebarFilter = () => {
 
             <TextField
               value={localFilter.location}
-              onChange={handleLocation}
+              onChange={(e) => handleChange("location", e.target.value)}
               placeholder="City"
               variant="outlined"
               InputProps={{
@@ -143,7 +130,7 @@ const SidebarFilter = () => {
                   name="options"
                   value={opt}
                   checked={localFilter.options.includes(opt)}
-                  onChange={handleOptionChange}
+                  onChange={(e) => handleCheckboxToggle(opt, e.target.checked)}
                   icon={
                     <IconTile label={productFeatureMap[opt].label} name={opt} />
                   }
@@ -167,7 +154,7 @@ const SidebarFilter = () => {
               row
               name="type"
               value={localFilter.type ?? ""}
-              onChange={handleSelectChange}
+              onChange={(e) => handleChange("type", e.target.value)}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -196,7 +183,7 @@ const SidebarFilter = () => {
               ))}
             </RadioGroup>
           </FormControl>
-
+          {/* Vehicle ttransmission */}
           <FormControl component="fieldset" sx={{ mb: 4 }}>
             <FormLabel>Transmission</FormLabel>
             <Divider sx={{ my: 3 }} />
@@ -204,7 +191,7 @@ const SidebarFilter = () => {
               row
               name="transmission"
               value={localFilter.transmission ?? ""}
-              onChange={handleSelectChange}
+              onChange={(e) => handleChange("transmission", e.target.value)}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -237,7 +224,7 @@ const SidebarFilter = () => {
               )}
             </RadioGroup>
           </FormControl>
-
+          {/* Vehicle engine */}
           <FormControl component="fieldset" sx={{ mb: 4 }}>
             <FormLabel>Engine</FormLabel>
             <Divider sx={{ my: 3 }} />
@@ -245,7 +232,7 @@ const SidebarFilter = () => {
               row
               name="engine"
               value={localFilter.engine ?? ""}
-              onChange={handleSelectChange}
+              onChange={(e) => handleChange("engine", e.target.value)}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",

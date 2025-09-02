@@ -6,7 +6,7 @@ const productsAdapter = createEntityAdapter({
 });
 
 const initialFilter = {
-  location: null,
+  location: "",
   type: null,
   options: [],
   transmission: null,
@@ -45,15 +45,7 @@ export const productsSlice = createSlice({
       if ("limit" in action.payload) state.filter.limit = limit;
     },
     resetFilter: (state) => {
-      state.filter = {
-        location: null,
-        type: null,
-        transmission: null,
-        engine: null,
-        options: [],
-        page: 1,
-        limit: 4,
-      };
+      state.filter = initialFilter;
     },
   },
   extraReducers: (builder) =>
