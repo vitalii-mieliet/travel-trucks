@@ -267,7 +267,22 @@ const SidebarFilter = ({ toggleFilters }) => {
           </FormControl>
 
           {/* Buttons */}
-          <Box display="flex" justifyContent="space-between">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            sx={{
+              position: { xs: "sticky", md: "static" }, // sticky только на мобильных
+              bottom: { xs: 0, md: "auto" }, // приклеено к низу экрана на мобилках
+
+              marginInline: { xs: -2, md: "auto" },
+              p: { xs: 2, md: 0 },
+              bgcolor: { xs: "background.paper", md: "transparent" },
+              boxShadow: { xs: "0 -4px 6px rgba(0,0,0,0.1)", md: "none" },
+              gap: 2,
+
+              zIndex: { xs: 10, md: "auto" }, // поверх контента на мобилке
+            }}
+          >
             <Button type="submit" variant="contained">
               Search
             </Button>
