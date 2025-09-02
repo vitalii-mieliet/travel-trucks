@@ -1,7 +1,14 @@
 import Box from "@mui/material/Box";
 import React from "react";
-
-import { Button, Drawer, List, ListItem, useTheme } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  Button,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  useTheme,
+} from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 const navLinks = [
@@ -9,12 +16,13 @@ const navLinks = [
   { label: "Catalog", to: "/catalog" },
 ];
 
-export const NavButton = ({ to, children }) => {
+export const NavButton = ({ to, children, onClick }) => {
   const theme = useTheme();
 
   return (
     <NavLink
       to={to}
+      onClick={onClick}
       style={({ isActive }) => ({
         color: isActive
           ? theme.palette.button?.hover || theme.palette.primary.main
@@ -54,19 +62,40 @@ export const MobileMenu = ({ open, toggleDrawer }) => {
       component={"nav"}
       aria-label="Mobile navigation"
       sx={{ width: 250, paddingTop: 4 }}
-      onClick={toggleDrawer(false)}
     >
       <List>
         {navLinks.map(({ label, to }) => (
           <ListItem key={to}>
-            <NavButton to={to}>{label}</NavButton>
+            <NavButton to={to} onClick={toggleDrawer(false)}>
+              {label}
+            </NavButton>
           </ListItem>
         ))}
       </List>
     </Box>
   );
   return (
-    <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+    <Drawer
+      anchor="right"
+      open={open}
+      onClose={toggleDrawer(false)}
+      ModalProps={{
+        keepMounted: true,
+      }}
+    >
+      <IconButton
+        onClick={toggleDrawer(false)}
+        aria-label="Close"
+        sx={{
+          width: "auto",
+          minWidth: 0,
+          alignSelf: "flex-end",
+          p: 1,
+          m: 1,
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
       {DrawerList}
     </Drawer>
   );
