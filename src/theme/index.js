@@ -227,7 +227,8 @@ const theme = createTheme({
         },
 
         outlined: {
-          padding: "12px 32px",
+          width: "100%",
+          padding: "16px 60px",
           borderRadius: "200px",
           borderWidth: "1px",
           borderStyle: "solid",
@@ -257,6 +258,16 @@ const theme = createTheme({
             textDecoration: "none",
           },
         },
+      },
+    },
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+    MuiIconButton: {
+      defaultProps: {
+        disableRipple: true,
       },
     },
     MuiChip: {
@@ -303,16 +314,7 @@ const theme = createTheme({
         },
       },
     },
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true,
-      },
-    },
-    MuiIconButton: {
-      defaultProps: {
-        disableRipple: true,
-      },
-    },
+
     MuiTabs: {
       styleOverrides: {
         root: {
