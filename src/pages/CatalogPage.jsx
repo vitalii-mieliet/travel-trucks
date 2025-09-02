@@ -108,7 +108,7 @@ const CatalogPage = () => {
           <CloseIcon />
         </IconButton>
         {openFilters && (
-          <Box p={2} width={"100%"}>
+          <Box p={2} width={"100vw"}>
             <SidebarFilter toggleFilters={setOpenFilters} />
           </Box>
         )}

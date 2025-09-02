@@ -23,6 +23,7 @@ const ProductCard = ({ product }) => {
     <Card
       sx={{
         display: "flex",
+        flexDirection: { xs: "column", lg: "row" },
         gap: 2,
         overflow: "hidden",
         maxWidth: "100%",
@@ -33,7 +34,7 @@ const ProductCard = ({ product }) => {
       <CardMedia
         component="img"
         sx={{
-          width: 292,
+          width: { xs: "100%", md: 292 },
           height: 320,
           objectFit: "cover",
           flexShrink: 0,
@@ -53,11 +54,7 @@ const ProductCard = ({ product }) => {
         }}
       >
         {/* Name, Price,  Favorites*/}
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="flex-start"
-        >
+        <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h2" component="h2" noWrap mr={1}>
             {name}
           </Typography>
@@ -93,13 +90,13 @@ const ProductCard = ({ product }) => {
         <ProductFeaturesIcons product={product} />
 
         {/* Show More Button */}
-        <Box mt="auto">
-          <Button
-            mt="auto"
-            variant="contained"
-            component={Link}
-            to={`/catalog/${id}`}
-          >
+        <Box
+          sx={{
+            marginTop: { xs: 3, md: "auto" },
+            textAlign: { xs: "center", md: "left" },
+          }}
+        >
+          <Button variant="contained" component={Link} to={`/catalog/${id}`}>
             Show more
           </Button>
         </Box>
