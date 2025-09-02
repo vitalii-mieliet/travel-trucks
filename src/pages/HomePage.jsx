@@ -22,13 +22,13 @@ const HomePage = () => {
       <Container disableGutters>
         <Box
           sx={{
-            textAlign: { xs: "center", md: "left" },
+            textAlign: { xs: "center", lg: "left" },
           }}
         >
           <Typography variant="h1" component="h1" mb={2}>
             Campers of your dreams
           </Typography>
-          <Typography variant="h6" component="p" mb={5}>
+          <Typography variant="subtitle1" component="p" mb={5}>
             You can find everything you want in our catalog
           </Typography>
           <Button variant="contained" component={Link} to="/catalog">
