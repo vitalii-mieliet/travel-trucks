@@ -102,13 +102,13 @@ const CatalogPage = () => {
             minWidth: 0,
             alignSelf: "flex-end",
             p: 1,
-            m: 1,
+            m: 2,
           }}
         >
           <CloseIcon />
         </IconButton>
         {openFilters && (
-          <Box sx={{ p: 2 }}>
+          <Box p={2} width={"100%"}>
             <SidebarFilter toggleFilters={setOpenFilters} />
           </Box>
         )}

@@ -19,8 +19,8 @@ const IconTile = ({ name, label: customLabel, iconName, active = false }) => {
   return (
     <Box
       sx={{
-        width: "112px",
-        height: "96px",
+        width: { xs: 84, md: 112 },
+        height: { xs: 72, md: 96 },
         border: "1px solid",
         borderColor: active ? "var(--button)" : "var(--gray-light)",
         borderRadius: "12px",
