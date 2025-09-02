@@ -6,13 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import {
-  Container,
-  Icon,
-  IconButton,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Container, Icon, IconButton, useMediaQuery } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/icons/Logo.svg";
 import { DesktopMenu, MobileMenu } from "./HeaderMenus";
@@ -20,8 +14,8 @@ import { mediaTo } from "@/theme/media";
 
 const Header = () => {
   const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(mediaTo(theme, "md"));
+
+  const isMobile = useMediaQuery(mediaTo("md"));
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);

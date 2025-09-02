@@ -2,16 +2,11 @@ import { createTheme } from "@mui/material/styles";
 import themeVars from "@/styles/themeVars";
 import AppIcon from "@/components/common/AppIcon/AppIcon.jsx";
 import { mediaFrom } from "./media";
+import { BREAKPOINTS } from "./breakpoints";
 
 const theme = createTheme({
   breakpoints: {
-    values: {
-      xs: 320,
-      sm: 375,
-      md: 768,
-      lg: 1024,
-      xl: 1440,
-    },
+    values: BREAKPOINTS,
   },
   palette: {
     primary: { main: themeVars.main },
@@ -49,53 +44,73 @@ const theme = createTheme({
   typography: {
     fontFamily: themeVars.fontFamily,
     h1: {
-      fontSize: "42px",
-      fontWeight: "600",
-      lineHeight: "122%",
+      fontWeight: 600,
       color: themeVars.white,
+      fontSize: "40px", // от мобилы до десктопа
+      lineHeight: 1.2,
+      [mediaFrom("sm")]: {
+        fontSize: "44px",
+        lineHeight: 1,
+      },
+      [mediaFrom("lg")]: {
+        fontSize: "48px",
+        lineHeight: 0.67, // только на десктопе
+      },
     },
     h2: {
-      fontSize: "24px",
-      fontWeight: "600",
-      lineHeight: "133%",
+      fontWeight: 600,
       color: themeVars.main,
+      fontSize: "clamp(20px, 3vw, 32px)",
+      lineHeight: 1.33,
     },
     h3: {
-      fontSize: "20px",
       fontWeight: 600,
-      lineHeight: "133%",
       color: themeVars.main,
+      fontSize: "24px",
+      lineHeight: 1.33,
     },
     h5: {
-      fontSize: "16px",
       fontWeight: 500,
-      lineHeight: "150%",
       color: themeVars.text,
+      fontSize: "16px",
+      lineHeight: 1.5,
     },
     h6: {
-      fontSize: "24px",
       fontWeight: 600,
-      lineHeight: "133%",
       color: themeVars.white,
+      fontSize: "24px",
+      lineHeight: 1.33,
     },
     body1: {
-      fontSize: "16px",
-      fontWeight: "400",
-      lineHeight: "150%",
+      fontWeight: 400,
       color: themeVars.main,
+      fontSize: "16px",
+      lineHeight: 1.5,
     },
     body2: {
-      fontSize: "16px",
-      fontWeight: "400",
-      lineHeight: "150%",
+      fontWeight: 400,
       color: themeVars.text,
+      fontSize: "16px",
+      lineHeight: 1.5,
     },
     button: {
+      fontFamily: themeVars.fontFamily,
+      fontWeight: 500,
       fontSize: "16px",
-      fontWeight: "500",
-      lineHeight: "150%",
+      lineHeight: 1.5,
+      textTransform: "none",
+      letterSpacing: "-0.01em",
     },
-    caption: { fontSize: "12px" },
+    subtitle1: {
+      fontWeight: 600,
+      color: themeVars.white,
+      fontSize: "24px",
+      lineHeight: 1.33,
+    },
+
+    caption: {
+      fontSize: "12px",
+    },
   },
   shape: {
     borderRadius: 12,
@@ -120,52 +135,46 @@ const theme = createTheme({
     },
     MuiToolbar: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          maxWidth: "375px",
+        root: {
+          width: "100%",
           paddingLeft: "16px",
           paddingRight: "16px",
           marginLeft: "auto",
           marginRight: "auto",
-          width: "100%",
-          [mediaFrom(theme, "md")]: {
+
+          [mediaFrom("sm")]: {
             maxWidth: "768px",
             paddingLeft: "32px",
             paddingRight: "32px",
           },
-          [mediaFrom(theme, "lg")]: {
+          [mediaFrom("lg")]: {
             maxWidth: "1440px",
             paddingLeft: "64px",
             paddingRight: "64px",
           },
-        }),
+        },
       },
     },
     MuiContainer: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          maxWidth: "375px",
+        root: {
           width: "100%",
           boxSizing: "border-box",
           paddingTop: 48,
           paddingBottom: 80,
           paddingLeft: 16,
           paddingRight: 16,
-          [mediaFrom(theme, "md")]: {
+          [mediaFrom("sm")]: {
             maxWidth: "768px",
-            width: "100%",
-            paddingTop: 48,
-            paddingBottom: 80,
             paddingLeft: 32,
             paddingRight: 32,
           },
-          [mediaFrom(theme, "lg")]: {
+          [mediaFrom("lg")]: {
             maxWidth: "1440px",
-            paddingTop: 48,
-            paddingBottom: 80,
             paddingLeft: 64,
             paddingRight: 64,
           },
-        }),
+        },
       },
     },
     MuiCard: {
@@ -197,36 +206,39 @@ const theme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        root: {
-          fontFamily: themeVars.fontFamily,
-          textTransform: "none",
-          fontWeight: 500,
-          fontSize: "16px",
-          lineHeight: "150%",
-          letterSpacing: "-0.01em",
-        },
-
         contained: {
+          width: "100%",
+          maxWidth: "320px",
           padding: "16px 60px",
           borderRadius: "200px",
           color: themeVars.white,
           backgroundColor: themeVars.button,
           boxShadow: "none",
           transition: "background-color 0.3s ease",
+
+          [mediaFrom("lg")]: {
+            width: "auto",
+          },
+
           "&:hover": {
             backgroundColor: themeVars.buttonHover,
             boxShadow: "none",
           },
         },
+
         outlined: {
-          padding: "16px 60px",
+          padding: "12px 32px",
           borderRadius: "200px",
           borderWidth: "1px",
           borderStyle: "solid",
           borderColor: themeVars.grayLight,
           color: themeVars.main,
-
           transition: "background-color 0.3s ease",
+
+          [mediaFrom("lg")]: {
+            width: "auto",
+          },
+
           "&:hover": {
             borderColor: themeVars.buttonHover,
             backgroundColor: "transparent",
@@ -234,10 +246,11 @@ const theme = createTheme({
         },
 
         text: {
-          textDecoration: "none",
           padding: 0,
           minWidth: "auto",
           color: themeVars.main,
+          textDecoration: "none",
+
           "&:hover": {
             color: themeVars.buttonHover,
             backgroundColor: "transparent",
