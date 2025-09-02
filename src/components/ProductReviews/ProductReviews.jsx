@@ -19,7 +19,7 @@ const ProductReviews = () => {
   const { reviews } = useOutletContext();
 
   return (
-    <Box component={"section"}>
+    <Box id="reviews" component={"section"}>
       <Typography variant="h3" component={"h3"} sx={visuallyHidden}>
         Reviews
       </Typography>

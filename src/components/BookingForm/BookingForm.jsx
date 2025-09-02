@@ -20,7 +20,14 @@ const BookingForm = ({ product }) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box paddingX={7.25} paddingY={5.5}>
+    <Box
+      px={{ xs: 2, lg: 5.5 }}
+      py={{ xs: 2, lg: 5.5 }}
+      sx={{
+        border: "1px solid #dadde1",
+        borderRadius: "10px",
+      }}
+    >
       <Typography variant="h3" mb={1}>
         Book your campervan now
       </Typography>

@@ -13,6 +13,7 @@ import {
 import AppIcon from "../common/AppIcon/AppIcon";
 import theme from "@/theme";
 import { Link } from "react-router-dom";
+import { scrollToId } from "@/utils/scroll";
 
 const ProductOverview = ({ product }) => {
   return (
@@ -25,7 +26,23 @@ const ProductOverview = ({ product }) => {
               fill={theme.palette.ratingStar.active}
               stroke="none"
             />
-            <Link to={`/catalog/${product.id}/reviews`}>
+            <Link
+              to={`/catalog/${product.id}/reviews`}
+              onClick={() => scrollToId("reviews")}
+              // onClick={() => {
+              //   setTimeout(() => {
+              //     const el = document.getElementById("reviews");
+              //     if (el) {
+              //       const yOffset = -100; // смещение в пикселях
+              //       const y =
+              //         el.getBoundingClientRect().top +
+              //         window.pageYOffset +
+              //         yOffset;
+              //       window.scrollTo({ top: y, behavior: "smooth" });
+              //     }
+              //   }, 0);
+              // }}
+            >
               <Typography>
                 {product.rating} ({product.reviews.length} Reviews)
               </Typography>

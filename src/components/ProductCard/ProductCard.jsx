@@ -15,6 +15,7 @@ import AppIcon from "../common/AppIcon/AppIcon";
 import ProductFeaturesIcons from "../common/ProductFeaturesIcons/ProductFeaturesIcons";
 import theme from "@/theme";
 import FavoriteButton from "../common/FavoriteButton/FavoriteButton";
+import { scrollToId } from "@/utils/scroll";
 
 const ProductCard = ({ product }) => {
   const { id, name, price, location, rating, reviews, description, gallery } =
@@ -71,7 +72,10 @@ const ProductCard = ({ product }) => {
             fill={theme.palette.ratingStar.active}
             stroke="none"
           />
-          <Link to={`/catalog/${id}/reviews`}>
+          <Link
+            to={`/catalog/${id}/reviews#reviews`}
+            onClick={() => scrollToId("reviews")}
+          >
             <Typography>
               {rating} ({reviews.length} Reviews)
             </Typography>

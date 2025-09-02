@@ -46,7 +46,13 @@ const SidebarFilter = ({ toggleFilters }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(setFilter({ ...localFilter, page: 1 }));
+    dispatch(
+      setFilter({
+        ...localFilter,
+        location: localFilter.location.trim(),
+        page: 1,
+      })
+    );
     toggleFilters?.(false);
   };
 

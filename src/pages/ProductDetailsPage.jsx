@@ -24,7 +24,7 @@ const ProductDetailsPage = () => {
   const currentTab = currentPath.endsWith("reviews") ? 1 : 0;
 
   return (
-    <Container maxWidth="1440px" disableGutters>
+    <Container disableGutters>
       <Box mb={7.75}>
         <Typography variant="h2" component="h2" mb={1}>
           {product.name}
@@ -38,7 +38,13 @@ const ProductDetailsPage = () => {
         </Tabs>
       </Box>
 
-      <Grid container spacing={4} columns={2}>
+      <Grid
+        container
+        spacing={4}
+        flexDirection={{ xs: "column", md: "row" }}
+        columns={{ xs: 1, md: 2 }}
+        justifyContent="center"
+      >
         <Grid size={1}>
           <Outlet context={product} />
         </Grid>
